@@ -73,6 +73,9 @@ public class User implements Serializable {
     @Size(max = 10)
     @Column(name = "telephone")
     private String telephone;
+    @Size(max = 100)
+    @Column(name = "titreCV")
+    private String titreCV;
     @ManyToMany(mappedBy = "userList")
     private List<Experience> experienceList;
     @ManyToMany(mappedBy = "userList")
@@ -153,6 +156,14 @@ public class User implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getTitreCV() {
+        return titreCV;
+    }
+
+    public void setTitreCV(String titreCV) {
+        this.titreCV = titreCV;
     }
 
     @XmlTransient

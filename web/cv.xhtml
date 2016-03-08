@@ -20,20 +20,43 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <div class="container" style="background-color: greenyellow; margin-left: 5%; margin-right:10%; margin-bottom: 10%; margin-top: 5%">
-                  
-           <h:form class="formulaire">
 
-                           
+            <h:form class="formulaire">
+
+
                 <div class="container" style="background-color: black; margin-top: 2%" >			
                     <div class="container" style="color: yellow">
                         <nav class="navbar navbar-light bg-faded">
                             <h:outputLink  class="navbar-brand" value="informationPersonnelle.xhtml" style="background: black; color: white   ">IDENTIFIANT</h:outputLink>
                             <h:outputLink  class="navbar-brand" value="formation.xhtml" style="background: black; color: white   ">FORMATION</h:outputLink>
                             <h:outputLink  class="navbar-brand" value="competence.xhtml" style="background: black; color: white   ">COMPETENCE</h:outputLink>
-                             <h:outputLink  class="navbar-brand" value="experience.xhtml" style="background: black; color: white   ">EXPERIENCE</h:outputLink>
-                             <h:outputLink  class="navbar-brand" value="langue.xhtml" style="background: black; color: white   ">LANGUE</h:outputLink>
-                             <h:outputLink  class="navbar-brand" value="centreInteret.xhtml" style="background: black; color: white   ">CENTRE D'INTERET</h:outputLink>
+                            <h:outputLink  class="navbar-brand" value="experience.xhtml" style="background: black; color: white   ">EXPERIENCE</h:outputLink>
+                            <h:outputLink  class="navbar-brand" value="langue.xhtml" style="background: black; color: white   ">LANGUE</h:outputLink>
+                            <h:outputLink  class="navbar-brand" value="centreInteret.xhtml" style="background: black; color: white   ">CENTRE D'INTERET</h:outputLink>
                         </nav>
+                    </div>
+                </div>
+                <div>
+                    <h1 style="text-align: center;background-color: white">CURRICULUM VITAE</h1>
+                    <h2 class="text-left" style ="margin-top: 5% ;background-color: white">IDENTITES PERSONNELLES</h2>
+                    <div class="infoPersonnelle">
+                        <h3>
+                            <h:outputText class="text-left" value ="#{userManagedBean.firstname} #{userManagedBean.name}"></h:outputText><br></br>
+                            <h:outputText class="text-left" value ="#{userManagedBean.address}"></h:outputText><br></br>
+                            <h:outputText class="text-left" value ="#{userManagedBean.phoneNumber}"></h:outputText><br></br>
+                            <h:outputText class="text-left" value ="#{userManagedBean.mail}"></h:outputText><br></br>
+                            <h:outputText class="text-left" value ="#{userManagedBean.birthdate}"></h:outputText><br></br>
+                        </h3>
+                        <h1 style="text-align: center; background-color: white">
+                            <h:outputText class="text-center" value ="#{userManagedBean.titreCV}"></h:outputText>
+                        </h1>
+                    </div>
+                    <div class="formation">
+                                            <h2 class="text-left" style ="margin-top: 5% ;background-color: white">FORMATIONS</h2>
+                        <h3>
+                            
+                        </h3>
+                        
                     </div>
                 </div>
             </h:form>

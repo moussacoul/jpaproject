@@ -35,7 +35,16 @@ public class UserManagedBean  implements Serializable{
     private String pass;
     private String confirmerPass;
     private String phoneNumber;
-    static int idUser;
+    private String titreCV;
+
+    public String getTitreCV() {
+        return titreCV;
+    }
+
+    public void setTitreCV(String titreCV) {
+        this.titreCV = titreCV;
+    }
+    private static int idUser;
     private static User user = null;
     
     public String getName() {
@@ -145,7 +154,8 @@ public class UserManagedBean  implements Serializable{
             u.setEmail(mail);
             u.setPass(pass);
             this.userFacade.create(u);
-            user = u;
+            user = userFacade.findByEmail(mail);
+            idUser = user.getIdUser();
             return "cv";
         }
         return "inscription";
@@ -153,7 +163,7 @@ public class UserManagedBean  implements Serializable{
     
       public String insertUserInfo(){
           
-      user = userFacade.insertUserInfo(pass, name, firstname, phoneNumber, birthdate, address, mail);
+      user = userFacade.insertUserInfo(pass, name, firstname, phoneNumber, birthdate, address, mail,titreCV);
       if(user!=null){
           return "cv";
       }        
@@ -164,5 +174,9 @@ public class UserManagedBean  implements Serializable{
     
       public static User getCurrentUser(){
           return user;
+      }
+      
+      public int getUserId(){
+          return idUser;
       }
 }

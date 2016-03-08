@@ -44,7 +44,7 @@ public class UserFacade extends AbstractFacade<User>{
     /*
     il faut faire une transaction begin .... commit
     */
-    public User insertUserInfo(String pass, String name, String pren, String num, Date date, String address, String mail) {
+    public User insertUserInfo(String pass, String name, String pren, String num, Date date, String address, String mail,String titrecv) {
         User u = findByEmail(mail);
        // em.getTransaction().begin();
         u.setAdresse(address);
@@ -53,6 +53,7 @@ public class UserFacade extends AbstractFacade<User>{
         u.setTelephone(num);
        // u.setDateNaissassance(date);
         u.setPass(pass);
+        u.setTitreCV(titrecv);
         em.persist(u);
        // em.getTransaction().commit();
         return u;
