@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+        
+    </h:head>
+    <h:body>
+        <h:form class="formulaire">
+       
+            <div class="container">			
+            <div class="row" style="margin-top:7%;">
+              <div class="col-md-7 col-md-offset-3">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <strong class="">Centre d'interet</strong>
+                  </div>
+                  <div class="panel-body">
+                
+                    <div class ="row">
+                        <div class="col-md-offset-1 col-md-4">
+                            <div class="form-group">
+                                <label for="nomC">Nom</label>
+                                <h:inputText value="#{centreInteretBean.nom}" class="form-control" id ="nomL" pt:placeholder ="Nom"/>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-1 col-md-9">
+                            <div class="form-group">
+                                <label for="CommentaireL">Commentaire</label>
+                                <h:inputTextarea value="#{centreInteretBean.commentaire}" class="form-control" rows="2" id ="commentaireL" pt:placeholder ="Commentaire"/>
+                            </div>
+                         </div>
+                    </div>
+                    
+                    <div class ="row">
+                        <div class="col-md-offset-5 col-md-1">
+                            <h:commandButton value="Enregistrer" action="#{centreInteretBean.createCInteret()}" class="btn btn-primary"/>
+                        </div>
+                    </div>
+            
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </h:form>
+        
+    </h:body>
+</html>

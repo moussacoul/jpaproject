@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 janv. 2016, 23:18:20
+    Author     : Moussa
+*/
+.toto{
+    color: red ;
+    margin-bottom: 80px;
+    margin-left: 500px ;
+}
+h1{
+    text-align: left;
+    margin-left:  0px
+    
+}
+
+
+
+.login{
+    margin-left: 60px
+}
+.pass{
+    margin-left: 20px
+}
+
+p{
+    margin-left: 80px
+}
+.formulaire{
+    
+}
