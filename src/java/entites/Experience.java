@@ -6,6 +6,7 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -71,6 +72,7 @@ public class Experience implements Serializable {
     private List<User> userList;
 
     public Experience() {
+        userList = new ArrayList<User>();
     }
 
     public Experience(Integer idExperience) {
@@ -165,6 +167,10 @@ public class Experience implements Serializable {
     @Override
     public String toString() {
         return "entites.Experience[ idExperience=" + idExperience + " ]";
+    }
+
+    public void addUser(User user) {
+        userList.add(user);
     }
     
 }

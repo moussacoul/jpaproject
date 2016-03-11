@@ -7,6 +7,9 @@ package managedBean;
 
 import entites.Experience;
 import entites.ExperienceFacade;
+import entites.Formation;
+import entites.User;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -30,6 +33,7 @@ public class ExperienceBean {
     private String pays;
     private String Commentaire;
     private Experience experience = new Experience();
+    User user = UserManagedBean.getCurrentUser();
     public ExperienceBean() {
     }
 
@@ -90,7 +94,15 @@ public class ExperienceBean {
         experience.setType(type);
         
         expFacade.create(experience);
+       experience.addUser(user);
+        user.addExperience(experience);
+        experience = new Experience();
         return "cv";
+    }
+    
+    public List<Experience>allExperience(){
+        createExprerience();
+        return user.getExperienceList();
     }
     
     

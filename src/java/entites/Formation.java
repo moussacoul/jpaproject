@@ -121,6 +121,7 @@ public class Formation implements Serializable {
     }
     
     public void addUser(User u){
+        if(userList.contains(u))return;
         userList.add(u);
     }
 

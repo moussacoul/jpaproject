@@ -8,6 +8,7 @@ package managedBean;
 import entites.Formation;
 import entites.FormationFacade;
 import entites.User;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,14 +24,16 @@ public class FormationBean {
 
     
     @EJB
-    private FormationFacade formationFacade;
+    private FormationFacade formationFacade ;
     
     private String nomF;
     private String anneeF;
     private String LieuF;
     private String Commentaire;
     private Formation formation = new Formation();
+    User user = UserManagedBean.getCurrentUser();
     public FormationBean(){
+        formationFacade = new FormationFacade();
         
     }
 
@@ -66,6 +69,7 @@ public class FormationBean {
         this.Commentaire = Commentaire;
     }
     
+    
     // faire une trabsaction 
     public String createFormation(){
        
@@ -74,9 +78,10 @@ public class FormationBean {
         formation.setLieuFormation(LieuF);
         formation.setNomFormation(nomF);
         this.formationFacade.create(formation);
-        User user = UserManagedBean.getCurrentUser();
+        
         formation.addUser(user);
         user.addFormation(formation);
+        
        //a
         
        /* UserManagedBean user = (UserManagedBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pass");
@@ -86,5 +91,9 @@ public class FormationBean {
         formation.getUserList().add(formation.getIdFormation(), UserManagedBean.idUser);*/
         
         return "cv";
-    }    
+    }
+    public List<Formation>allFormation(){
+        createFormation();
+        return user.getFormationList();
+    }
 }

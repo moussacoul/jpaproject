@@ -6,6 +6,7 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -88,6 +89,11 @@ public class User implements Serializable {
     private List<Centreinteret> centreinteretList;
 
     public User() {
+        formationList = new ArrayList<Formation>();
+        experienceList = new ArrayList<Experience>();
+        centreinteretList = new ArrayList<Centreinteret>();
+        linguistiqueList = new ArrayList<Linguistique>();
+        competenceList = new ArrayList<Competence>();
     }
 
     public User(Integer idUser) {
@@ -212,6 +218,7 @@ public class User implements Serializable {
     }
     
     public void addFormation(Formation f){
+        if(formationList.contains(f))return;
         formationList.add(f);
     }
 
@@ -236,6 +243,10 @@ public class User implements Serializable {
     public String toString() {
         return "entites.User[ idUser=" + idUser + " ]";
     }
-    
+
+    public void addExperience(Experience experience) {
+        
+        if(!experienceList.contains(experience))experienceList.add(experience);
+    }
     
 }

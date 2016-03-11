@@ -52,12 +52,152 @@ and open the template in the editor.
                         </h1>
                     </div>
                     <div class="formation">
-                                            <h2 class="text-left" style ="margin-top: 5% ;background-color: white">FORMATIONS</h2>
+                        <h2 class="text-left" style ="margin-top: 5% ;background-color: white">FORMATIONS</h2>
                         <h3>
-                            
+                            <h:dataTable value="#{formationBean.allFormation()}" var="o">
+
+                                <h:column>
+                                    #{o.anneeFormation}
+                                </h:column>
+
+                                <h:column>
+                                    #{o.nomFormation}
+                                </h:column>
+
+                                <h:column>
+                                    #{o.lieuFormation}
+                                </h:column>
+
+                                <h:column>
+                                    #{o.commentaireFormation}
+                                </h:column> <br></br>
+
+                            </h:dataTable>
+
+
                         </h3>
-                        
+
                     </div>
+                    
+                    <div class="competence">
+                        <h2 class="text-left" style ="margin-top: 5% ;background-color: white">COMPETENCES</h2>
+                        <h3>
+                           <!-- <h:dataTable value="{experienceBean.allExperience()}" var="o">
+
+                                <h:column>
+                                    {o.annee}
+                                </h:column>
+
+                                <h:column>
+                                    {o.type}
+                                </h:column>
+
+                                <h:column>
+                                    {o.nbMois}
+                                </h:column>
+                                <h:column>
+                                    {.pays}
+                                </h:column>
+                                <h:column>
+                                    {o.commentaire}
+                                </h:column> <br></br>
+                                <h:column>
+                                    {o.ville}
+                                </h:column>
+                            </h:dataTable>-->
+                        </h3>
+
+                    </div>
+                    <div class="experience">
+                        <h2 class="text-left" style ="margin-top: 5% ;background-color: white">EXPERIENCES</h2>
+                        <h3>
+                            <h:dataTable value="#{experienceBean.allExperience()}" var="o">
+
+                                <h:column>
+                                    #{o.annee}
+                                </h:column>
+
+                                <h:column>
+                                    #{o.type}
+                                </h:column>
+
+                                <h:column>
+                                    #{o.nbMois}
+                                </h:column>
+                                <h:column>
+                                    #{o.pays}
+                                </h:column>
+                                <h:column>
+                                    #{o.commentaire}
+                                </h:column>
+                                  <h:column>
+                                    #{o.ville}
+                                </h:column><br></br>
+                              
+                            </h:dataTable>
+                        </h3>
+
+                    </div>
+                    
+                    <div class="langue">
+                        <h2 class="text-left" style ="margin-top: 5% ;background-color: white">COMPETENCES LINGUISTIQUE</h2>
+                        <h3>
+                           <!-- <h:dataTable value="{experienceBean.allExperience()}" var="o">
+
+                                <h:column>
+                                    {o.annee}
+                                </h:column>
+
+                                <h:column>
+                                    {o.type}
+                                </h:column>
+
+                                <h:column>
+                                    {o.nbMois}
+                                </h:column>
+                                <h:column>
+                                    {.pays}
+                                </h:column>
+                                <h:column>
+                                    {o.commentaire}
+                                </h:column> <br></br>
+                                <h:column>
+                                    {o.ville}
+                                </h:column>
+                            </h:dataTable>-->
+                        </h3>
+
+                    </div>
+                    <div class="centreinteret">
+                        <h2 class="text-left" style ="margin-top: 5% ;background-color: white">CENTRE D'INTERET</h2>
+                        <h3>
+                           <!-- <h:dataTable value="{experienceBean.allExperience()}" var="o">
+
+                                <h:column>
+                                    {o.annee}
+                                </h:column>
+
+                                <h:column>
+                                    {o.type}
+                                </h:column>
+
+                                <h:column>
+                                    {o.nbMois}
+                                </h:column>
+                                <h:column>
+                                    {.pays}
+                                </h:column>
+                                <h:column>
+                                    {o.commentaire}
+                                </h:column> <br></br>
+                                <h:column>
+                                    {o.ville}
+                                </h:column>
+                            </h:dataTable>-->
+                        </h3>
+
+                    </div>
+                    
                 </div>
             </h:form>
         </div>
