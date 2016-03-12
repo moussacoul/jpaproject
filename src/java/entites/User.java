@@ -89,11 +89,7 @@ public class User implements Serializable {
     private List<Centreinteret> centreinteretList;
 
     public User() {
-        formationList = new ArrayList<Formation>();
-        experienceList = new ArrayList<Experience>();
-        centreinteretList = new ArrayList<Centreinteret>();
-        linguistiqueList = new ArrayList<Linguistique>();
-        competenceList = new ArrayList<Competence>();
+        
     }
 
     public User(Integer idUser) {
@@ -218,7 +214,7 @@ public class User implements Serializable {
     }
     
     public void addFormation(Formation f){
-        if(formationList.contains(f))return;
+        //if(formationList.contains(f))return;
         formationList.add(f);
     }
 

@@ -56,21 +56,10 @@ and open the template in the editor.
                         <h3>
                             <h:dataTable value="#{formationBean.allFormation()}" var="o">
 
-                                <h:column>
-                                    #{o.anneeFormation}
-                                </h:column>
-
-                                <h:column>
-                                    #{o.nomFormation}
-                                </h:column>
-
-                                <h:column>
-                                    #{o.lieuFormation}
-                                </h:column>
-
-                                <h:column>
-                                    #{o.commentaireFormation}
-                                </h:column> <br></br>
+                                <h:column>#{o.anneeFormation}</h:column>
+                                <h:column> : </h:column>
+                                <h:column>#{o.nomFormation} #{o.lieuFormation} #{o.commentaireFormation}</h:column>
+                                <br></br>
 
                             </h:dataTable>
 
@@ -78,37 +67,28 @@ and open the template in the editor.
                         </h3>
 
                     </div>
-                    
-                    <div class="competence">
+
+                   <div class="competence">
                         <h2 class="text-left" style ="margin-top: 5% ;background-color: white">COMPETENCES</h2>
                         <h3>
-                           <!-- <h:dataTable value="{experienceBean.allExperience()}" var="o">
-
+                            <h:dataTable value="#{competenceBean.allCompetence()}" var="o">
+                           
                                 <h:column>
-                                    {o.annee}
+                                    <h:outputText  value="#{o.domaine}"><br></br></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <h:outputText value="#{o.module}"/>
+                                </h:column> 
+                                <h:column>
+                                    <h:outputText value="#{o.commentaire}"/>
                                 </h:column>
 
-                                <h:column>
-                                    {o.type}
-                                </h:column>
-
-                                <h:column>
-                                    {o.nbMois}
-                                </h:column>
-                                <h:column>
-                                    {.pays}
-                                </h:column>
-                                <h:column>
-                                    {o.commentaire}
-                                </h:column> <br></br>
-                                <h:column>
-                                    {o.ville}
-                                </h:column>
-                            </h:dataTable>-->
+                            </h:dataTable>
+                                 
                         </h3>
 
                     </div>
-                    <div class="experience">
+                   <div class="experience">
                         <h2 class="text-left" style ="margin-top: 5% ;background-color: white">EXPERIENCES</h2>
                         <h3>
                             <h:dataTable value="#{experienceBean.allExperience()}" var="o">
@@ -130,74 +110,49 @@ and open the template in the editor.
                                 <h:column>
                                     #{o.commentaire}
                                 </h:column>
-                                  <h:column>
+                                <h:column>
                                     #{o.ville}
                                 </h:column><br></br>
-                              
+
                             </h:dataTable>
                         </h3>
 
                     </div>
-                    
+
                     <div class="langue">
                         <h2 class="text-left" style ="margin-top: 5% ;background-color: white">COMPETENCES LINGUISTIQUE</h2>
                         <h3>
-                           <!-- <h:dataTable value="{experienceBean.allExperience()}" var="o">
-
-                                <h:column>
-                                    {o.annee}
-                                </h:column>
-
-                                <h:column>
-                                    {o.type}
-                                </h:column>
-
-                                <h:column>
-                                    {o.nbMois}
-                                </h:column>
-                                <h:column>
-                                    {.pays}
-                                </h:column>
-                                <h:column>
-                                    {o.commentaire}
-                                </h:column> <br></br>
-                                <h:column>
-                                    {o.ville}
-                                </h:column>
-                            </h:dataTable>-->
+                            <h:dataTable value="#{langueBean.allLangue()}" var="o">
+ 
+                                 <h:column>
+                                     #{o.nomLing} :  
+                                 </h:column>
+ 
+                                 <h:column>
+                                     #{ o.niveau}
+                                 </h:column>
+                             </h:dataTable>
                         </h3>
 
                     </div>
                     <div class="centreinteret">
                         <h2 class="text-left" style ="margin-top: 5% ;background-color: white">CENTRE D'INTERET</h2>
                         <h3>
-                           <!-- <h:dataTable value="{experienceBean.allExperience()}" var="o">
-
-                                <h:column>
-                                    {o.annee}
-                                </h:column>
-
-                                <h:column>
-                                    {o.type}
-                                </h:column>
-
-                                <h:column>
-                                    {o.nbMois}
-                                </h:column>
-                                <h:column>
-                                    {.pays}
-                                </h:column>
-                                <h:column>
-                                    {o.commentaire}
-                                </h:column> <br></br>
-                                <h:column>
-                                    {o.ville}
-                                </h:column>
-                            </h:dataTable>-->
+                            <h:dataTable value="#{centreInteretBean.allCentreInteret()}" var="o">
+ 
+                                 <h:column>
+                                     #{ o.nomCi } :
+                                 </h:column>
+ 
+                                 <h:column>
+                                     #{ o.commentaire } 
+                                 </h:column>
+ 
+                               </h:dataTable>
                         </h3>
 
                     </div>
-                    
+
                 </div>
             </h:form>
         </div>

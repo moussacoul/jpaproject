@@ -9,6 +9,8 @@ import entites.Experience;
 import entites.ExperienceFacade;
 import entites.Formation;
 import entites.User;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -21,7 +23,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class ExperienceBean {
+public class ExperienceBean implements Serializable{
     
     @EJB
     private ExperienceFacade expFacade;
@@ -32,10 +34,11 @@ public class ExperienceBean {
     private String ville;
     private String pays;
     private String Commentaire;
-    private Experience experience = new Experience();
     User user = UserManagedBean.getCurrentUser();
+    
     public ExperienceBean() {
     }
+    
 
     public String getAnnee() {
         return annee;
@@ -86,23 +89,31 @@ public class ExperienceBean {
     }
     
     public String createExprerience(){
+       
+        List<User> userList = new ArrayList<User>();
+        userList.add(user);
+        Experience experience = new Experience(annee, Commentaire, duree, pays, type, ville, userList);
+        expFacade.create(experience);
+        /*
         experience.setAnnee(annee);
         experience.setCommentaire(Commentaire);
         experience.setNbMois(duree);
         experience.setPays(pays);
         experience.setVille(ville);
-        experience.setType(type);
+        experience.setType(type);*/
         
-        expFacade.create(experience);
+       /*expFacade.create(experience);
        experience.addUser(user);
         user.addExperience(experience);
-        experience = new Experience();
+        experience = new Experience();*/
         return "cv";
     }
     
     public List<Experience>allExperience(){
-        createExprerience();
-        return user.getExperienceList();
+        //createExprerience();
+        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
+        System.out.println(expFacade.getExperienceByUserId(user.getIdUser()));
+        return expFacade.getExperienceByUserId(user.getIdUser());
     }
     
     

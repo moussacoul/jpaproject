@@ -8,6 +8,8 @@ package managedBean;
 import entites.Formation;
 import entites.FormationFacade;
 import entites.User;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -20,7 +22,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class FormationBean {
+public class FormationBean implements Serializable{
 
     
     @EJB
@@ -30,10 +32,10 @@ public class FormationBean {
     private String anneeF;
     private String LieuF;
     private String Commentaire;
-    private Formation formation = new Formation();
+   // private 
     User user = UserManagedBean.getCurrentUser();
     public FormationBean(){
-        formationFacade = new FormationFacade();
+       // formationFacade = new FormationFacade();
         
     }
 
@@ -72,15 +74,18 @@ public class FormationBean {
     
     // faire une trabsaction 
     public String createFormation(){
-       
-        formation.setAnneeFormation(anneeF);
+        List<User> listUser = new ArrayList<User>();
+        listUser.add(user);
+        Formation formation = new Formation(anneeF, Commentaire, LieuF, nomF,listUser);
+        formationFacade.create(formation);
+        /*formation.setAnneeFormation(anneeF);
         formation.setCommentaireFormation(Commentaire);
         formation.setLieuFormation(LieuF);
         formation.setNomFormation(nomF);
         this.formationFacade.create(formation);
         
         formation.addUser(user);
-        user.addFormation(formation);
+        user.addFormation(formation);*/
         
        //a
         
@@ -93,7 +98,10 @@ public class FormationBean {
         return "cv";
     }
     public List<Formation>allFormation(){
-        createFormation();
-        return user.getFormationList();
+        //createFormation();
+       // user.setFormationList(new ArrayList<Formation>());
+        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
+        System.out.println(formationFacade.getFormationByUserId(user.getIdUser()));
+        return formationFacade.getFormationByUserId(user.getIdUser());
     }
 }

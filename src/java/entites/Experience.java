@@ -72,8 +72,20 @@ public class Experience implements Serializable {
     private List<User> userList;
 
     public Experience() {
-        userList = new ArrayList<User>();
+       
     }
+
+    public Experience( String annee, String commentaire, Integer nbMois, String pays, String type, String ville, List<User> userList) {
+     
+        this.annee = annee;
+        this.commentaire = commentaire;
+        this.nbMois = nbMois;
+        this.pays = pays;
+        this.type = type;
+        this.ville = ville;
+        this.userList = userList;
+    }
+    
 
     public Experience(Integer idExperience) {
         this.idExperience = idExperience;

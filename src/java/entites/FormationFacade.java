@@ -30,13 +30,27 @@ public class FormationFacade extends AbstractFacade<Formation> {
         super(Formation.class);
     }
     
-    public List<Integer> getFormationByUserId(Integer id_formation) {
+    /*public List<Integer> getFormationByUserId(Integer id_formation) {
 
     Query query = em.createNamedQuery("select u from userformation u where u.id_user =" +id_formation).setParameter("id_formation", id_formation) ;
     
     List<Integer> userformation = query.getResultList() ;
     
      return userformation ;
-}
+}*/
+    public List<Formation> getFormationByUserId(int user_id) {
+
+    Query query = em.createQuery("select u.formationList from User u where u.idUser = "+user_id );
+    
+    List<Formation> userformation = query.getResultList() ;
+    
+     return userformation ;
+    }
+    
+   /* public void entityManager(Formation f){
+        em.persist(f);
+    }*/
+    
+    
     
 }

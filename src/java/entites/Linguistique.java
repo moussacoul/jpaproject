@@ -58,6 +58,12 @@ public class Linguistique implements Serializable {
     public Linguistique() {
     }
 
+    public Linguistique(String niveau, String nomLing, List<User> userList) {
+        this.niveau = niveau;
+        this.nomLing = nomLing;
+        this.userList = userList;
+    }
+
     public Linguistique(Integer idLing) {
         this.idLing = idLing;
     }

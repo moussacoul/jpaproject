@@ -63,6 +63,15 @@ public class Competence implements Serializable {
     public Competence() {
     }
 
+    public Competence(String commentaire, String domaine, String module, List<User> userList) {
+        this.commentaire = commentaire;
+        this.domaine = domaine;
+        this.module = module;
+        this.userList = userList;
+    }
+    
+    
+
     public Competence(Integer idComp) {
         this.idComp = idComp;
     }

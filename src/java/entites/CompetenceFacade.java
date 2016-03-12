@@ -5,9 +5,11 @@
  */
 package entites;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +28,14 @@ public class CompetenceFacade extends AbstractFacade<Competence> {
 
     public CompetenceFacade() {
         super(Competence.class);
+    }
+    public List<Competence> getCompetenceByUserId(int user_id) {
+
+    Query query = em.createQuery("select u.competenceList from User u where u.idUser = "+user_id );
+    
+    List<Competence> userformation = query.getResultList() ;
+    
+     return userformation ;
     }
     
 }

@@ -7,6 +7,10 @@ package managedBean;
 
 import entites.Competence;
 import entites.CompetenceFacade;
+import entites.User;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,14 +21,14 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class CompetenceBean {
+public class CompetenceBean implements Serializable{
 
     @EJB
     private CompetenceFacade competenceFacade;
      private String domaine;
     private String module;
     private String Commentaire;
-    private Competence competence = new Competence();
+    User user = UserManagedBean.getCurrentUser();
     
     public CompetenceBean(){
         
@@ -55,12 +59,24 @@ public class CompetenceBean {
     }
     
     public String createCompetence(){
-        competence.setDomaine(domaine);
+        
+        List<User> userList =new ArrayList<User>();
+        userList.add(user);
+        Competence competence = new Competence(Commentaire, domaine, module, userList);
+        
+        /*competence.setDomaine(domaine);
         competence.setModule(module);
-        competence.setCommentaire(Commentaire);
+        competence.setCommentaire(Commentaire);*/
         
         competenceFacade.create(competence);
         return "cv";
+    }
+    public List<Competence>allCompetence(){
+        //createFormation();
+       // user.setFormationList(new ArrayList<Formation>());
+        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
+        System.out.println(competenceFacade.getCompetenceByUserId(user.getIdUser()));
+        return competenceFacade.getCompetenceByUserId(user.getIdUser());
     }
     
     
