@@ -38,4 +38,5 @@ public class CompetenceFacade extends AbstractFacade<Competence> {
      return userformation ;
     }
     
+    
 }

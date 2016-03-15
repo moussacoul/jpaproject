@@ -29,6 +29,7 @@ public class LangueBean implements Serializable{
     private String niveau;
     private String nom;
    
+    
     User user = UserManagedBean.getCurrentUser();
     public LangueBean() {
     }
@@ -63,9 +64,18 @@ public class LangueBean implements Serializable{
         //createFormation();
        // user.setFormationList(new ArrayList<Formation>());
         System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
-        System.out.println(langFacade.getFormationByUserId(user.getIdUser()));
-        return langFacade.getFormationByUserId(user.getIdUser());
+        System.out.println(langFacade.getLangueByUserId(user.getIdUser()));
+        return langFacade.getLangueByUserId(user.getIdUser());
     }
-    
+    public String remove(){
+        for(Linguistique l :langFacade.getLangueByUserId(user.getIdUser())){
+            if(l.getNomLing().equals(nom)){
+                //competenceFacade.remove(c);
+                langFacade.remove(l);
+            }
+        }
+        
+        return "cv";
+    }
     
 }

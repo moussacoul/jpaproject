@@ -28,6 +28,9 @@ public class CompetenceBean implements Serializable{
      private String domaine;
     private String module;
     private String Commentaire;
+
+    
+   
     User user = UserManagedBean.getCurrentUser();
     
     public CompetenceBean(){
@@ -79,6 +82,16 @@ public class CompetenceBean implements Serializable{
         return competenceFacade.getCompetenceByUserId(user.getIdUser());
     }
     
+    public String remove(){
+        for(Competence c :competenceFacade.getCompetenceByUserId(user.getIdUser())){
+            if(c.getModule().equals(module)){
+                //competenceFacade.remove(c);
+                competenceFacade.remove(c);
+            }
+        }
+        
+        return "cv";
+    }
     
     
 }

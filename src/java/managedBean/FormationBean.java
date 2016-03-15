@@ -33,7 +33,7 @@ public class FormationBean implements Serializable{
     private String LieuF;
     private String Commentaire;
    // private 
-    User user = UserManagedBean.getCurrentUser();
+    User currentUser = UserManagedBean.getCurrentUser();
     public FormationBean(){
        // formationFacade = new FormationFacade();
         
@@ -75,7 +75,7 @@ public class FormationBean implements Serializable{
     // faire une trabsaction 
     public String createFormation(){
         List<User> listUser = new ArrayList<User>();
-        listUser.add(user);
+        listUser.add(currentUser);
         Formation formation = new Formation(anneeF, Commentaire, LieuF, nomF,listUser);
         formationFacade.create(formation);
         /*formation.setAnneeFormation(anneeF);
@@ -84,24 +84,36 @@ public class FormationBean implements Serializable{
         formation.setNomFormation(nomF);
         this.formationFacade.create(formation);
         
-        formation.addUser(user);
-        user.addFormation(formation);*/
+        formation.addUser(currentUser);
+        currentUser.addFormation(formation);*/
         
        //a
         
-       /* UserManagedBean user = (UserManagedBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pass");
+       /* UserManagedBean currentUser = (UserManagedBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pass");
       
         String mesParametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().values().toString(); 
-        System.out.println(user +"   ttttttttttttttttttttttttttttttt" + mesParametres);    
+        System.out.println(currentUser +"   ttttttttttttttttttttttttttttttt" + mesParametres);    
         formation.getUserList().add(formation.getIdFormation(), UserManagedBean.idUser);*/
         
         return "cv";
     }
     public List<Formation>allFormation(){
+        
         //createFormation();
-       // user.setFormationList(new ArrayList<Formation>());
-        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
-        System.out.println(formationFacade.getFormationByUserId(user.getIdUser()));
-        return formationFacade.getFormationByUserId(user.getIdUser());
+       // currentUser.setFormationList(new ArrayList<Formation>());
+        System.out.println(currentUser.getIdUser()+" tttttttttttttttttttttttttttt");
+        System.out.println(formationFacade.getFormationByUserId(currentUser.getIdUser()));
+        return formationFacade.getFormationByUserId(currentUser.getIdUser());
+    }
+    
+    public String remove(){
+        for(Formation f :formationFacade.getFormationByUserId(currentUser.getIdUser())){
+            if(f.getNomFormation().equals(nomF)){
+                //competenceFacade.remove(c);
+                formationFacade.remove(f);
+            }
+        }
+        
+        return "cv";
     }
 }

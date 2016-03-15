@@ -115,6 +115,15 @@ public class ExperienceBean implements Serializable{
         System.out.println(expFacade.getExperienceByUserId(user.getIdUser()));
         return expFacade.getExperienceByUserId(user.getIdUser());
     }
-    
+    public String remove(){
+        for(Experience e :expFacade.getExperienceByUserId(user.getIdUser())){
+            if(e.getAnnee().equals(annee)){
+                //competenceFacade.remove(c);
+                expFacade.remove(e);
+            }
+        }
+        
+        return "cv";
+    }
     
 }

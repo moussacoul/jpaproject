@@ -30,7 +30,7 @@ public class LinguistiqueFacade extends AbstractFacade<Linguistique> {
         super(Linguistique.class);
     }
     
-    public List<Linguistique> getFormationByUserId(int user_id) {
+    public List<Linguistique> getLangueByUserId(int user_id) {
 
     Query query = em.createQuery("select u.linguistiqueList from User u where u.idUser  = "+user_id );
     

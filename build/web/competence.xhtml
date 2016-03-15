@@ -23,7 +23,7 @@ and open the template in the editor.
        
             <div class="container">			
             <div class="row" style="margin-top:7%;">
-              <div class="col-md-8 col-md-offset-2">
+              <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <strong class="">Competence</strong>
@@ -37,7 +37,7 @@ and open the template in the editor.
                                 <h:inputText value="#{competenceBean.domaine}" class="form-control" id ="domaine" pt:placeholder ="Domaine"/>
                             </div>
                         </div>
-                        <div class="col-md-offset-2 col-md-4">
+                        <div class="col-md-offset-1 col-md-4">
                             <div class="form-group">
                                 <label for="module">Module</label>
                                 <h:inputText value="#{competenceBean.module}" class="form-control" id ="module" pt:placeholder ="Module"/>
@@ -46,7 +46,7 @@ and open the template in the editor.
 
                     </div>
                     <div class ="row">
-                         <div class="col-md-offset-2 col-md-8">
+                         <div class="col-md-offset-1 col-md-9">
                             <div class="form-group">
                                 <label for="CommentaireC">Commentaire</label>
                                 <h:inputTextarea value="#{competenceBean.commentaire}" class="form-control" rows="2" id ="commentaireC" pt:placeholder ="Commentaire"/>
@@ -54,8 +54,11 @@ and open the template in the editor.
                          </div>
                     </div>
                     <div class ="row">
-                        <div class="col-md-offset-5 col-md-1">
-                            <h:commandButton value="Enregistrer" action="#{competenceBean.createCompetence()}" class="btn btn-primary"/>
+                        <div class="col-md-offset-3 col-md-1">
+                            <h:commandButton value="  Ajouter  " action="#{competenceBean.createCompetence()}" class="btn btn-primary"/>
+                        </div>
+                        <div class="col-md-offset-1 col-md-1">
+                            <h:commandButton value="Suprimer" action="supprimerCompetence" class="btn btn-primary"/>
                         </div>
                     </div>
              

@@ -8,6 +8,7 @@ import bean.utilisateurBean;
 import entites.User;
 import entites.UserFacade;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 import javax.ejb.EJB;
 import javax.faces.bean.*;
@@ -26,7 +27,7 @@ public class UserManagedBean  implements Serializable{
     //private static final long serialVersionUID = 1L;
     
     @EJB
-    private UserFacade userFacade;
+    private UserFacade currentUserFacade;
     private String mail;
     private String name;
     private String firstname;
@@ -36,6 +37,7 @@ public class UserManagedBean  implements Serializable{
     private String confirmerPass;
     private String phoneNumber;
     private String titreCV;
+   
 
     public String getTitreCV() {
         return titreCV;
@@ -45,7 +47,7 @@ public class UserManagedBean  implements Serializable{
         this.titreCV = titreCV;
     }
     private static int idUser;
-    private static User user = null;
+    private static User currentUser =null;
     
     public String getName() {
         return name;
@@ -120,21 +122,28 @@ public class UserManagedBean  implements Serializable{
         User u = new User();
         u.setEmail(mail);
         u.setPass(pass);
-        userFacade.create(u);
+        currentUserFacade.create(u);
     }
     
     public List<User> findAll(){
-        return this.userFacade.findAll();
+        return this.currentUserFacade.findAll();
     }
 
    
-    public String isExist(){ // faire un select where
-        user =userFacade.findByEmail(mail);
-        if(user!= null){
-            if(userFacade.find(user.getIdUser()) != null && user.getPass().equals(pass)){
-                idUser = user.getIdUser();
-                String mesParametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().values().toString(); 
-                System.out.println(mesParametres+"loginnnnnnnnnnnnnnnnnnnnnn");
+    public String isExist() throws UnsupportedEncodingException{ // faire un select where
+        currentUser = new User();
+        currentUser =currentUserFacade.findByEmail(mail);
+        if(currentUser!= null){
+            if(currentUserFacade.find(currentUser.getIdUser()) != null && currentUser.getPass().equals(pass)){
+                idUser = currentUser.getIdUser();
+                FacesContext context = FacesContext.getCurrentInstance();
+                Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+                String email = paramMap.get("j_idt6:email");//return current currentUser
+                currentUser = currentUserFacade.find(currentUserFacade.findByEmail(email).getIdUser());
+                System.out.println(paramMap.keySet() + " okokkkkkkkkkkkkkkkkkkkkkkk" + email + "  "+currentUser.getIdUser());
+                /*String mesParametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().values().toString(); 
+                System.out.println(mesParametres.getBytes("email")+"loginnnnnnnnnnnnnnnnnnnnnn");*/
+              //  currentUser = 
              return "cv";
             }
                 
@@ -149,13 +158,13 @@ public class UserManagedBean  implements Serializable{
     }
    
     public String inscription(){
-        if(mail.contains("@") && pass.equals(confirmerPass) && userFacade.findByEmail(mail) == null){
+        if(mail.contains("@") && pass.equals(confirmerPass) && currentUserFacade.findByEmail(mail) == null){
             User u = new User();
             u.setEmail(mail);
             u.setPass(pass);
-            this.userFacade.create(u);
-            user = userFacade.findByEmail(mail);
-            idUser = user.getIdUser();
+            this.currentUserFacade.create(u);
+            currentUser = currentUserFacade.findByEmail(mail);
+            idUser = currentUser.getIdUser();
             return "cv";
         }
         return "inscription";
@@ -163,8 +172,8 @@ public class UserManagedBean  implements Serializable{
     
       public String insertUserInfo(){
           
-      user = userFacade.insertUserInfo(pass, name, firstname, phoneNumber, birthdate, address, mail,titreCV);
-      if(user!=null){
+      currentUser = currentUserFacade.insertUserInfo(pass, name, firstname, phoneNumber, birthdate, address, mail,titreCV);
+      if(currentUser!=null){
           return "cv";
       }        
        
@@ -173,7 +182,7 @@ public class UserManagedBean  implements Serializable{
     }
     
       public static User getCurrentUser(){
-          return user;
+          return currentUser;
       }
       
       public int getUserId(){

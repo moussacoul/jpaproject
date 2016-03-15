@@ -31,7 +31,7 @@ public class UserFacade extends AbstractFacade<User>{
         super(User.class);
     }
 
-    public User findByEmail(String email) {
+    public  User findByEmail(String email) {
         try {
             return (User) em.createNamedQuery(User.findByEmail).setParameter("email", email).setMaxResults(1).getSingleResult();
         } catch (NoResultException e) {
@@ -40,7 +40,7 @@ public class UserFacade extends AbstractFacade<User>{
             return null;
         }
     }
-
+    
     /*
     il faut faire une transaction begin .... commit
     */
