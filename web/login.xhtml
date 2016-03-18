@@ -11,29 +11,31 @@ and open the template in the editor.
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-    <ui:define name="title">The CV</ui:define>
+    <ui:define name="title">Login</ui:define>
     <ui:define name="contenu">
         <h:outputStylesheet library="css" name="style.css" />
         <h:form class="formulaire">
             <b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow" >
-                <h2 class="form-signin-heading" style="padding-left:15px;">Connexion</h2>
+                <h3 class="form-signin-heading" style="padding-left:15px;">Connexion</h3>
                 <div style="padding:15px;background-color: white;">
                 <b:row>
                     <b:column span="12">
-                            <b:inputText id="email"	value="#{userManagedBean.mail}">
-                                    <f:facet name="append">
-                                            <b:iconAwesome name="tag" />
-                                    </f:facet>
-                            </b:inputText>
+                        <label for="email">Email</label>
+                        <b:inputText id="email" value="#{userManagedBean.mail}">
+                            <f:facet name="append">
+                                <b:iconAwesome name="tag" />
+                            </f:facet>
+                        </b:inputText>
                     </b:column>
                 </b:row>
                 <b:row>
                     <b:column span="12">
-                            <b:inputText id="password"	type="password" value="#{userManagedBean.pass}">
-                                    <f:facet name="append">
-                                            <b:iconAwesome name="ticket" />
-                                    </f:facet>
-                            </b:inputText>
+                        <label for="Pass">Password</label>
+                        <b:inputText id="pass" type="password" value="#{userManagedBean.pass}">
+                            <f:facet name="append">
+                                    <b:iconAwesome name="ticket" />
+                            </f:facet>
+                        </b:inputText>
                     </b:column>
                 </b:row>
                 <b:row>
