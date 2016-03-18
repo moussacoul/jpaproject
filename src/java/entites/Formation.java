@@ -67,6 +67,14 @@ public class Formation implements Serializable {
     public Formation() {
     }
 
+    public Formation(String anneeFormation, String commentaireFormation, String lieuFormation, String nomFormation, List<User> userList) {
+        this.anneeFormation = anneeFormation;
+        this.commentaireFormation = commentaireFormation;
+        this.lieuFormation = lieuFormation;
+        this.nomFormation = nomFormation;
+        this.userList = userList;
+    }
+    
     public Formation(Integer idFormation) {
         this.idFormation = idFormation;
     }
@@ -121,7 +129,7 @@ public class Formation implements Serializable {
     }
     
     public void addUser(User u){
-        if(userList.contains(u))return;
+        //if(userList.contains(u))return;
         userList.add(u);
     }
 

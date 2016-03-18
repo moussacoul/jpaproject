@@ -59,6 +59,12 @@ public class Centreinteret implements Serializable {
     public Centreinteret() {
     }
 
+    public Centreinteret(String commentaire, String nomCi, List<User> userList) {
+        this.commentaire = commentaire;
+        this.nomCi = nomCi;
+        this.userList = userList;
+    }
+
     public Centreinteret(Integer idCinteret) {
         this.idCinteret = idCinteret;
     }

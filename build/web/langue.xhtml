@@ -47,15 +47,19 @@ and open the template in the editor.
                     
                     <div class ="row">
                         <div class="col-md-offset-5 col-md-1">
-                            <h:commandButton value="Enregistrer" action="#{langueBean.createLangue()}" class="btn btn-primary"/>
+                            <h:commandButton value="Ajouter" action="#{langueBean.createLangue()}" class="btn btn-primary"/>
                         </div>
+                        <div class="col-md-offset-1 col-md-1">
+                            <h:commandButton value="Suprimer" action="supprimerLangue" class="btn btn-primary"/>
+                        </div>
+                    </div>
                     </div>
              
                 </div>
                 </div>
                 </div>
             </div>
-            </div>
+            
         </h:form>
         
     </h:body>

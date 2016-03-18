@@ -8,6 +8,10 @@ package managedBean;
 
 import entites.Linguistique;
 import entites.LinguistiqueFacade;
+import entites.User;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,14 +22,15 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class LangueBean {
+public class LangueBean implements Serializable{
     
     @EJB
     private LinguistiqueFacade langFacade;
     private String niveau;
     private String nom;
-    private Linguistique langue = new Linguistique();
-
+   
+    
+    User user = UserManagedBean.getCurrentUser();
     public LangueBean() {
     }
 
@@ -44,25 +49,33 @@ public class LangueBean {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public Linguistique getLangue() {
-        return langue;
-    }
-
-    public void setLangue(Linguistique langue) {
-        this.langue = langue;
-    }
-   
-    
     
     public String createLangue(){
-        
-        langue.setNiveau(niveau);
-        langue.setNomLing(nom);
+        List<User> userList = new ArrayList<User>();
+        userList.add(user);
+        Linguistique langue = new Linguistique(niveau, nom, userList);
+        /*langue.setNiveau(niveau);
+        langue.setNomLing(nom);*/
         langFacade.create(langue);
-        
         return "cv";
     }
     
+    public List<Linguistique>allLangue(){
+        //createFormation();
+       // user.setFormationList(new ArrayList<Formation>());
+        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
+        System.out.println(langFacade.getLangueByUserId(user.getIdUser()));
+        return langFacade.getLangueByUserId(user.getIdUser());
+    }
+    public String remove(){
+        for(Linguistique l :langFacade.getLangueByUserId(user.getIdUser())){
+            if(l.getNomLing().equals(nom)){
+                //competenceFacade.remove(c);
+                langFacade.remove(l);
+            }
+        }
+        
+        return "cv";
+    }
     
 }

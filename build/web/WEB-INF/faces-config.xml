@@ -80,5 +80,11 @@
             <to-view-id>/cv.xhtml</to-view-id>
         </navigation-case>
         
+        <navigation-case>
+            <from-action>#{competenceBean.remove()}</from-action>
+            <from-outcome>cv</from-outcome>
+            <to-view-id>/cv.xhtml</to-view-id>
+        </navigation-case>
+        
     </navigation-rule>
 </faces-config>

@@ -7,6 +7,10 @@ package managedBean;
 
 import entites.Centreinteret;
 import entites.CentreinteretFacade;
+import entites.User;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,13 +22,14 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class CentreInteretBean {
+public class CentreInteretBean implements Serializable{
     
     @EJB
     private CentreinteretFacade ciFacade;
     private String commentaire;
     private String nom;
-    private Centreinteret ci= new Centreinteret();
+    
+    User user = UserManagedBean.getCurrentUser();
     public CentreInteretBean() {
     }
 
@@ -47,11 +52,27 @@ public class CentreInteretBean {
     }
     
     public String createCInteret(){
-        ci.setNomCi(nom);
-        ci.setCommentaire(commentaire);
+        List<User> userList = new ArrayList<User>();
+        userList.add(user);
+        Centreinteret ci= new Centreinteret(commentaire, nom, userList);
         ciFacade.create(ci);
+        return "cv";
+    }
+    public List<Centreinteret>allCentreInteret(){
+        //createFormation();
+       // user.setFormationList(new ArrayList<Formation>());
+        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
+        System.out.println(ciFacade.getCentreInteretByUserId(user.getIdUser()));
+        return ciFacade.getCentreInteretByUserId(user.getIdUser());
+    }
+    public String remove(){
+        for(Centreinteret c :ciFacade.getCentreInteretByUserId(user.getIdUser())){
+            if(c.getNomCi().equals(nom)){
+                //competenceFacade.remove(c);
+                ciFacade.remove(c);
+            }
+        }
         
         return "cv";
     }
-    
 }

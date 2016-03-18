@@ -5,9 +5,11 @@
  */
 package entites;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +28,15 @@ public class LinguistiqueFacade extends AbstractFacade<Linguistique> {
 
     public LinguistiqueFacade() {
         super(Linguistique.class);
+    }
+    
+    public List<Linguistique> getLangueByUserId(int user_id) {
+
+    Query query = em.createQuery("select u.linguistiqueList from User u where u.idUser  = "+user_id );
+    
+    List<Linguistique> userformation = query.getResultList() ;
+    
+     return userformation ;
     }
     
 }
