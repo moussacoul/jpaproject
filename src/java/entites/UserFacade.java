@@ -58,7 +58,7 @@ public class UserFacade extends AbstractFacade<User>{
         u.setPrenom(pren);
         u.setTelephone(num);
        // u.setDateNaissassance(date);
-        u.setPass(pass);
+        //u.setPass(pass);
         u.setTitreCV(titrecv);
         em.persist(u);
        // em.getTransaction().commit();
