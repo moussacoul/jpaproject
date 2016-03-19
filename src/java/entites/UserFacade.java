@@ -36,6 +36,7 @@ public class UserFacade extends AbstractFacade<User>{
             return (User) em.createNamedQuery(User.findByEmail).setParameter("email", email).setMaxResults(1).getSingleResult();
         } catch (NoResultException e) {
 
+            System.err.println("NoResult Exception for email "+email);
             e.printStackTrace();
             return null;
         }

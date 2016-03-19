@@ -21,7 +21,7 @@ and open the template in the editor.
                 <b:row>
                     <b:column span="12">
                         <label for="email">Email</label>
-                        <b:inputText id="email" value="#{userManagedBean.mail}">
+                        <b:inputText id="email" value="#{userManagedBean.user.email}">
                             <f:facet name="append">
                                 <b:iconAwesome name="tag" />
                             </f:facet>
@@ -31,7 +31,7 @@ and open the template in the editor.
                 <b:row>
                     <b:column span="12">
                         <label for="Pass">Password</label>
-                        <b:inputText id="pass" type="password" value="#{userManagedBean.pass}">
+                        <b:inputText id="pass" type="password" value="#{userManagedBean.user.pass}">
                             <f:facet name="append">
                                     <b:iconAwesome name="ticket" />
                             </f:facet>

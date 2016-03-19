@@ -37,7 +37,12 @@ public class UserManagedBean  implements Serializable{
     private String confirmerPass;
     private String phoneNumber;
     private String titreCV;
-   
+    
+    private User user;
+
+    public UserManagedBean() {
+        user = new User();
+    }
 
     public String getTitreCV() {
         return titreCV;
@@ -131,22 +136,22 @@ public class UserManagedBean  implements Serializable{
 
    
     public String isExist() throws UnsupportedEncodingException{ // faire un select where
-        currentUser = new User();
-        currentUser =currentUserFacade.findByEmail(mail);
-        if(currentUser!= null){
-            if(currentUserFacade.find(currentUser.getIdUser()) != null && currentUser.getPass().equals(pass)){
-                idUser = currentUser.getIdUser();
+        User theuser = currentUserFacade.findByEmail(user.getEmail());
+        if(theuser!= null){
+            if(theuser.getPass().equals(user.getPass())){
+                idUser = theuser.getIdUser();
                 FacesContext context = FacesContext.getCurrentInstance();
                 Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
                 String email = paramMap.get("j_idt6:email");//return current currentUser
-                currentUser = currentUserFacade.find(currentUserFacade.findByEmail(email).getIdUser());
+                currentUser = theuser;
                 System.out.println(paramMap.keySet() + " okokkkkkkkkkkkkkkkkkkkkkkk" + email + "  "+currentUser.getIdUser());
                 /*String mesParametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().values().toString(); 
                 System.out.println(mesParametres.getBytes("email")+"loginnnnnnnnnnnnnnnnnnnnnn");*/
               //  currentUser = 
+              System.err.println("J'affiche le cv.");
              return "cv";
             }
-                
+            System.err.println("J'affiche le login.");  
             return "login";
         }
         
@@ -188,4 +193,11 @@ public class UserManagedBean  implements Serializable{
       public int getUserId(){
           return idUser;
       }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
 }
