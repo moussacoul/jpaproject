@@ -151,10 +151,16 @@ public class UserManagedBean  implements Serializable{
         if(currentUser!= null){
             if(currentUserFacade.find(currentUser.getIdUser()) != null && currentUser.getPass().equals(pass)){
                 idUser = currentUser.getIdUser();
+                name = currentUser.getNom();
+                firstname = currentUser.getPrenom();
+                pass = currentUser.getPass();
+                phoneNumber = currentUser.getTelephone();
+                titreCV = currentUser.getTitreCV();
+                /*
                 FacesContext context = FacesContext.getCurrentInstance();
                 Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
                 String email = paramMap.get("j_idt6:email");//return current currentUser
-                currentUser = currentUserFacade.find(currentUserFacade.findByEmail(email).getIdUser());
+                //currentUser = currentUserFacade.find(currentUserFacade.findByEmail(email).getIdUser());
                 System.out.println(paramMap.keySet() + " okokkkkkkkkkkkkkkkkkkkkkkk" + email + "  "+currentUser.getIdUser());
                 /*String mesParametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().values().toString(); 
                 System.out.println(mesParametres.getBytes("email")+"loginnnnnnnnnnnnnnnnnnnnnn");*/

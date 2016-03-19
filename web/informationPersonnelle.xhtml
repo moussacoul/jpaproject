@@ -1,113 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <h:head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="resources/css/style.css"/>
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
-
-    </h:head>
-    <h:body>
-        <div id="centrale">
-            <div id="conteneur">
-                <h:form class="formulaire">
-
-                    <div class="container">			
-                        <div class="row" style="margin-top:7%;">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <strong class="">Information personnelle</strong>
-                                    </div>
-                                    <div class="panel-body">
-                                       
-                                            <div class ="row">
-                                                <div class="col-md-offset-1 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="nom">Nom</label>
-                                                        <h:inputText value="#{userManagedBean.name}" class="form-control" id ="nom" pt:placeholder ="Nom"/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-offset-2 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="Prenom">Prenom</label>
-                                                        <h:inputText value="#{userManagedBean.firstname}" class="form-control" id ="prenom" pt:placeholder ="Prenom"/>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-
-                                                <div class="col-md-offset-1 col-md-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                                        <h:inputText value="#{userManagedBean.address}" class="form-control" id ="adresse" pt:placeholder ="Adresse"/>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-offset-2 col-md-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon glyphicon glyphicon-phone"></span>
-                                                        <h:inputText value="#{userManagedBean.phoneNumber}" class="form-control" id ="telephone" pt:placeholder ="Numero de Téléphone"/>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class ="row">
-                                                <div class="col-md-offset-1 col-md-10">
-                                                    <div class="form-group">
-                                                        <label for="Email">Email</label>
-                                                        <h:inputText value="#{userManagedBean.mail}" class="form-control" id ="email"  pt:placeholder ="admin@debingue.fr"/>
-                                                    </div>
-                                                </div>    
-                                            </div>
-                                            <div class ="row">
-                                                <div class="col-md-offset-1 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="pass">Mot de passe</label>
-                                                        <h:inputText value="#{userManagedBean.pass}" class="form-control" id ="pass" pt:placeholder ="Mot de passe"/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-offset-2 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="birthdate">Date de Naissance</label>
-                                                        <h:inputText value="#" class="form-control" id ="datenaissance" pt:placeholder ="Date de naissance"/>
-                                                    </div>
-                                                </div>
-                                                   
-                                            </div>
-                                         <div class ="row">
-                                                <div class="col-md-offset-1 col-md-10">
-                                                    <div class="form-group">
-                                                        <label for="titrecv">Titre du CV</label>
-                                                        <h:inputText value="#{userManagedBean.titreCV}" class="form-control" id ="titrecv"  pt:placeholder ="Titre du cv"/>
-                                                    </div>
-                                                </div>    
-                                            </div>
-                                            <div class ="row">
-                                                <div class="col-md-offset-5 col-md-1">
-                                                    <h:commandButton value="Enregistrer" action="#{userManagedBean.insertUserInfo()}" class="btn btn-primary"/>
-                                                </div>
-                                            </div>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </h:form>
-            </div>
-        </div>
-    </h:body>
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:define name="title">Informations Personnelles</ui:define>
+    <ui:define name="contenu">
+        <h:outputStylesheet library="css" name="style.css" />
+        <h:form class="formulaire">
+            <b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow" >
+                <h3 class="form-signin-heading" style="padding-left:15px;">Information personnelle</h3>
+                <div style="padding:15px;background-color: white;">
+					<b:row>
+						<b:column span="6">
+							<label for="nom">Nom</label>
+							<b:inputText id="nom"	value="#{userManagedBean.name}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+						<b:column span="6">
+							<label for="Prenom">Prenom</label>
+							<b:inputText id="prenom"	value="#{userManagedBean.firstname}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="6">
+							<label for="nom">Adresse</label>
+							<b:inputText id="adresse"	value="#{userManagedBean.address}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+						<b:column span="6">
+							<label for="Prenom">Téléphone</label>
+							<b:inputText id="telephone"	value="#{userManagedBean.phoneNumber}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="12">
+							<label for="Email">Email</label>
+							<b:inputText id="email"	value="#{userManagedBean.mail}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="6">
+							<label for="pass">Mot de passe</label>
+							<b:inputText id="pass"	value="#{userManagedBean.pass}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+						<b:column span="6">
+							<label for="birthdate">Date de Naissance</label>
+							<b:inputText id="datenaissance"	value="#">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="12">
+							<label for="titrecv">Titre du CV</label>
+							<b:inputText id="titrecv"	value="#{userManagedBean.titreCV}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="12">
+							<h:commandButton class="primary btn-info btn-md btn-block" value="Enregistrer" style="height:35px"
+									action="#{userManagedBean.insertUserInfo()}" >
+							</h:commandButton>
+						</b:column>
+					</b:row>
+                </div>
+            </b:container>
+        </h:form>
+    </ui:define>
+</ui:composition>

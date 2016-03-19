@@ -1,94 +1,91 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-    <h:head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
-        
-    </h:head>
-    <h:body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:define name="title">Experience</ui:define>
+    <ui:define name="contenu">
+        <h:outputStylesheet library="css" name="style.css" />
         <h:form class="formulaire">
-       
-            <div class="container">			
-            <div class="row" style="margin-top:7%;">
-              <div class="col-md-7 col-md-offset-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <strong class="">Experience</strong>
-                  </div>
-                  <div class="panel-body">
-                   
-                    <div class ="row">
-                        <div class="col-md-offset-1 col-md-3">
-                            <div class="form-group">
-                                <label for="type">Type de contrat</label>
-                                <h:inputText value="#{experienceBean.type}" class="form-control" id ="domaine" pt:placeholder ="Type"/>
-                            </div>
-                        </div>
-                        <div class="col-md-offset-0 col-md-3">
-                            <div class="form-group">
-                                <label for="anneeF">Annee</label>
-                                <h:inputText value="#{experienceBean.annee}" class="form-control" id ="anneeF" pt:placeholder ="Annee"/>
-                            </div>
-                        </div>
-                        <div class="col-md-offset-0 col-md-3">
-                            <div class="form-group">
-                                <label for="nbmois">Nombre de mois</label>
-                                <h:inputText value="#{experienceBean.duree}" class="form-control" id ="nbmois" pt:placeholder ="Nombre de mois"/>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                            <div class="col-md-offset-1 col-md-4">
-                            <div class="form-group">
-                                <label for="pays">Pays</label>
-                                <h:inputText value="#{experienceBean.pays}" class="form-control" id ="pays" pt:placeholder ="Paye"/>
-                            </div>
-                        </div>
-                         <div class="col-md-offset-1 col-md-4">
-                            <div class="form-group">
-                                <label for="ville">Ville</label>
-                                <h:inputText value="#{experienceBean.ville}" class="form-control" id ="ville" pt:placeholder ="Ville"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class ="row">
-                         <div class="col-md-offset-1 col-md-9">
-                            <div class="form-group">
-                                <label for="CommentaireE">Commentaire</label>
-                                <h:inputTextarea value="#{experienceBean.commentaire}" class="form-control" rows="2" id ="commentaireE" pt:placeholder ="Commentaire"/>
-                            </div>
-                         </div>
-                    </div>
-                    <div class ="row">
-                        <div class="col-md-offset-5 col-md-1">
-                            <h:commandButton value="Enregistrer" action="#{experienceBean.createExprerience()}" class="btn btn-primary"/>
-                        </div>
-                        
-                        <div class="col-md-offset-1 col-md-1">
-                            <h:commandButton value="Suprimer" action="supprimerExperience" class="btn btn-primary"/>
-                        </div>
-                    </div>
-              
+            <b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow" >
+                <h3 class="form-signin-heading" style="padding-left:15px;">Expérience</h3>
+                <div style="padding:15px;background-color: white;">
+					<b:row>
+						<b:column span="4">
+							<label for="type">Type de contrat</label>
+							<b:inputText id="domaine"	value="#{experienceBean.type}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+						<b:column span="4">
+							<label for="anneeF">Annee</label>
+							<b:inputText id="anneeF"	value="#{experienceBean.annee}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+						<b:column span="4">
+							<label for="nbmois">Nombre de mois</label>
+							<b:inputText id="nbmois"	value="#{experienceBean.duree}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="6">
+							<label for="pays">Pays</label>
+							<b:inputText id="pays"	value="#{experienceBean.pays}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+						<b:column span="6">
+							<label for="ville">Ville</label>
+							<b:inputText id="ville"	value="#{experienceBean.ville}">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="12">
+							<label for="CommentaireE">Commentaire</label>
+							<b:inputText id="commentaireE"	value="#{experienceBean.commentaire}" rows="2">
+								<f:facet name="append">
+									<b:iconAwesome name="tag" />
+								</f:facet>
+							</b:inputText>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="6">
+							<h:commandButton class="primary btn-info btn-md btn-block" value="Enregistrer" style="height:35px"
+									action="#{experienceBean.createExprerience()}" >
+							</h:commandButton>
+						</b:column>
+						<b:column span="6">
+							<h:commandButton class="primary btn-info btn-md btn-block" value="Suprimer" style="height:35px"
+									action="supprimerExperience" >
+							</h:commandButton>
+						</b:column>
+					</b:row>
                 </div>
-                </div>
-                </div>
-            </div>
-            </div>
+            </b:container>
         </h:form>
-        
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>
