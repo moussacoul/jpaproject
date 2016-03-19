@@ -15,28 +15,29 @@ and open the template in the editor.
     <ui:define name="contenu">
         <h:outputStylesheet library="css" name="style.css" />
         <h:form class="formulaire">
-			<b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow" >
-                            <b:row>
-                                <b:column span="2">
-                                    <h:commandButton value="IDENTIFIANT" action="informationPersonnelle.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+			<b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow">
+                            <b:row style="">
+                                <b:column span="6" style="">
+                                    <h:commandButton value="IDENTIFIANT" action="informationPersonnelle.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="FORMATION" action="formation.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                                 <b:column span="2">
-                                    <h:commandButton value="FORMATION" action="formation.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="FORMATION" action="formation.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                                 <b:column span="2">
-                                    <h:commandButton value="COMPETENCE" action="competence.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="COMPETENCE" action="competence.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                                 <b:column span="2">
-                                    <h:commandButton value="EXPERIENCE" action="experience.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="EXPERIENCE" action="experience.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                                 <b:column span="2">
-                                    <h:commandButton value="LANGUE" action="langue.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="LANGUE" action="langue.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                                 <b:column span="2">
-                                    <h:commandButton value="CENTRE D'INTERET" action="centreInteret.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="CENTRE D'INTERET" action="centreInteret.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                                 <b:column span="2">
-                                    <h:commandButton value="Deconnection" action="login.xhtml" class="primary btn-primary btn-md btn-block" style="height:35px"/>
+                                    <h:commandButton value="Deconnection" action="login.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
                                 </b:column>
                             </b:row>
                 <h3 class="form-signin-heading" style="padding-left:15px;">CURRICULUM VITAE</h3>
