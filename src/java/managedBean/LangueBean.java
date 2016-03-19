@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -26,11 +27,14 @@ public class LangueBean implements Serializable{
     
     @EJB
     private LinguistiqueFacade langFacade;
+    
+    @Inject    
+    private UserManagedBean userSession;  
     private String niveau;
     private String nom;
    
     
-    User user = UserManagedBean.getCurrentUser();
+    //User user = UserManagedBean.getCurrentUser();
     public LangueBean() {
     }
 
@@ -52,7 +56,7 @@ public class LangueBean implements Serializable{
     
     public String createLangue(){
         List<User> userList = new ArrayList<User>();
-        userList.add(user);
+        userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
         Linguistique langue = new Linguistique(niveau, nom, userList);
         /*langue.setNiveau(niveau);
         langue.setNomLing(nom);*/
@@ -63,12 +67,12 @@ public class LangueBean implements Serializable{
     public List<Linguistique>allLangue(){
         //createFormation();
        // user.setFormationList(new ArrayList<Formation>());
-        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
-        System.out.println(langFacade.getLangueByUserId(user.getIdUser()));
-        return langFacade.getLangueByUserId(user.getIdUser());
+        System.out.println(userSession.getUserId()+" tttttttttttttttttttttttttttt");
+        System.out.println(langFacade.getLangueByUserId(userSession.getUserId()));
+        return langFacade.getLangueByUserId(userSession.getUserId());
     }
     public String remove(){
-        for(Linguistique l :langFacade.getLangueByUserId(user.getIdUser())){
+        for(Linguistique l :langFacade.getLangueByUserId(userSession.getUserId())){
             if(l.getNomLing().equals(nom)){
                 //competenceFacade.remove(c);
                 langFacade.remove(l);

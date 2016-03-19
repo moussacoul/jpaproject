@@ -55,7 +55,6 @@ and open the template in the editor.
                                     <div class="col-md-offset-2 col-md-2">
                                         <h:commandButton class="btn btn-primary" value="Inscription" action="inscription"/>
                                     </div>    
-
                                 </div>
 
                             </div>
@@ -64,6 +63,13 @@ and open the template in the editor.
                 </div>
             </div>
         </h:form>
-
+        <h:form>
+            <h:inputText value="#{userManagedBean.login}">
+            </h:inputText>
+            <h:commandButton type="submit" value="Click AJAX" action="login.xhtml">
+                <f:ajax execute="@form" render="login_desc"/>
+            </h:commandButton>
+            <h:panelGroup layout="block" id="login_desc">#{userManagedBean.login}</h:panelGroup>
+        </h:form>
     </h:body>
 </html>

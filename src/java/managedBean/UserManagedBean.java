@@ -21,10 +21,14 @@ import javax.persistence.PersistenceContext;
  * @author Moussa
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped 
 
 public class UserManagedBean  implements Serializable{
-    //private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+
+    public UserFacade getCurrentUserFacade() {
+        return currentUserFacade;
+    }
     
     @EJB
     private UserFacade currentUserFacade;
@@ -37,18 +41,29 @@ public class UserManagedBean  implements Serializable{
     private String confirmerPass;
     private String phoneNumber;
     private String titreCV;
-   
+    private static int idUser;
+    private static User currentUser =null;
+    
+    private String login = "Moussa";
+    
+    
 
     public String getTitreCV() {
         return titreCV;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public void setTitreCV(String titreCV) {
         this.titreCV = titreCV;
     }
-    private static int idUser;
-    private static User currentUser =null;
-    
+   
     public String getName() {
         return name;
     }

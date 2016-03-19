@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -27,14 +28,15 @@ public class ExperienceBean implements Serializable{
     
     @EJB
     private ExperienceFacade expFacade;
-    
+    @Inject    
+    private UserManagedBean userSession;  
     private String annee;
     private String type;
     private int duree;
     private String ville;
     private String pays;
     private String Commentaire;
-    User user = UserManagedBean.getCurrentUser();
+    //User user = UserManagedBean.getCurrentUser();
     
     public ExperienceBean() {
     }
@@ -91,7 +93,7 @@ public class ExperienceBean implements Serializable{
     public String createExprerience(){
        
         List<User> userList = new ArrayList<User>();
-        userList.add(user);
+        userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
         Experience experience = new Experience(annee, Commentaire, duree, pays, type, ville, userList);
         expFacade.create(experience);
         /*
@@ -111,12 +113,12 @@ public class ExperienceBean implements Serializable{
     
     public List<Experience>allExperience(){
         //createExprerience();
-        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
-        System.out.println(expFacade.getExperienceByUserId(user.getIdUser()));
-        return expFacade.getExperienceByUserId(user.getIdUser());
+        System.out.println(userSession.getUserId()+" tttttttttttttttttttttttttttt");
+        System.out.println(expFacade.getExperienceByUserId(userSession.getUserId()));
+        return expFacade.getExperienceByUserId(userSession.getUserId());
     }
     public String remove(){
-        for(Experience e :expFacade.getExperienceByUserId(user.getIdUser())){
+        for(Experience e :expFacade.getExperienceByUserId(userSession.getUserId())){
             if(e.getAnnee().equals(annee)){
                 //competenceFacade.remove(c);
                 expFacade.remove(e);

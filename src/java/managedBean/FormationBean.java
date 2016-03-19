@@ -15,6 +15,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -27,7 +28,8 @@ public class FormationBean implements Serializable{
     
     @EJB
     private FormationFacade formationFacade ;
-    
+    @Inject    
+    private UserManagedBean userSession;  
     private String nomF;
     private String anneeF;
     private String LieuF;
@@ -75,7 +77,7 @@ public class FormationBean implements Serializable{
     // faire une trabsaction 
     public String createFormation(){
         List<User> listUser = new ArrayList<User>();
-        listUser.add(currentUser);
+        listUser.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
         Formation formation = new Formation(anneeF, Commentaire, LieuF, nomF,listUser);
         formationFacade.create(formation);
         /*formation.setAnneeFormation(anneeF);
@@ -102,12 +104,13 @@ public class FormationBean implements Serializable{
         //createFormation();
        // currentUser.setFormationList(new ArrayList<Formation>());
         System.out.println(currentUser.getIdUser()+" tttttttttttttttttttttttttttt");
-        System.out.println(formationFacade.getFormationByUserId(currentUser.getIdUser()));
-        return formationFacade.getFormationByUserId(currentUser.getIdUser());
+       System.out.println("idddddddddddddddd userSession  "+userSession.getUserId());
+        return formationFacade.getFormationByUserId(userSession.getUserId());
     }
     
     public String remove(){
-        for(Formation f :formationFacade.getFormationByUserId(currentUser.getIdUser())){
+        
+        for(Formation f :formationFacade.getFormationByUserId(userSession.getUserId())){
             if(f.getNomFormation().equals(nomF)){
                 //competenceFacade.remove(c);
                 formationFacade.remove(f);

@@ -8,9 +8,11 @@ package entites;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import managedBean.UserManagedBean;
 
 /**
  *
@@ -26,7 +28,10 @@ public class UserFacade extends AbstractFacade<User>{
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    @Inject    
+    private UserManagedBean userSession;  
+    
+    
     public UserFacade() {
         super(User.class);
     }
@@ -45,7 +50,7 @@ public class UserFacade extends AbstractFacade<User>{
     il faut faire une transaction begin .... commit
     */
     public User insertUserInfo(String pass, String name, String pren, String num, Date date, String address, String mail,String titrecv) {
-        User u = findByEmail(mail);
+        User u = find(userSession.getUserId());
        // em.getTransaction().begin();
         u.setAdresse(address);
         u.setNom(name);

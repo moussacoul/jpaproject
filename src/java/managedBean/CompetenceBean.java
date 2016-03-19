@@ -14,6 +14,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -25,13 +26,15 @@ public class CompetenceBean implements Serializable{
 
     @EJB
     private CompetenceFacade competenceFacade;
+     @Inject    
+    private UserManagedBean userSession;  
      private String domaine;
     private String module;
     private String Commentaire;
 
     
    
-    User user = UserManagedBean.getCurrentUser();
+   // User user = UserManagedBean.getCurrentUser();
     
     public CompetenceBean(){
         
@@ -64,7 +67,7 @@ public class CompetenceBean implements Serializable{
     public String createCompetence(){
         
         List<User> userList =new ArrayList<User>();
-        userList.add(user);
+        userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
         Competence competence = new Competence(Commentaire, domaine, module, userList);
         
         /*competence.setDomaine(domaine);
@@ -77,13 +80,13 @@ public class CompetenceBean implements Serializable{
     public List<Competence>allCompetence(){
         //createFormation();
        // user.setFormationList(new ArrayList<Formation>());
-        System.out.println(user.getIdUser()+" tttttttttttttttttttttttttttt");
-        System.out.println(competenceFacade.getCompetenceByUserId(user.getIdUser()));
-        return competenceFacade.getCompetenceByUserId(user.getIdUser());
+        System.out.println(userSession.getUserId()+" tttttttttttttttttttttttttttt");
+        System.out.println(competenceFacade.getCompetenceByUserId(userSession.getUserId()));
+        return competenceFacade.getCompetenceByUserId(userSession.getUserId());
     }
     
     public String remove(){
-        for(Competence c :competenceFacade.getCompetenceByUserId(user.getIdUser())){
+        for(Competence c :competenceFacade.getCompetenceByUserId(userSession.getUserId())){
             if(c.getModule().equals(module)){
                 //competenceFacade.remove(c);
                 competenceFacade.remove(c);
