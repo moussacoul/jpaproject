@@ -31,6 +31,15 @@ public class CompetenceBean implements Serializable{
      private String domaine;
     private String module;
     private String Commentaire;
+    private Boolean status = false;
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 
     
    
@@ -68,7 +77,7 @@ public class CompetenceBean implements Serializable{
         
         List<User> userList =new ArrayList<User>();
         userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
-        Competence competence = new Competence(Commentaire, domaine, module, userList);
+        Competence competence = new Competence(Commentaire, domaine, module, userList,status);
         
         /*competence.setDomaine(domaine);
         competence.setModule(module);

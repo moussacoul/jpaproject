@@ -44,7 +44,9 @@ and open the template in the editor.
                             <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">FORMATIONS</h4>
                             <div style="font-size: 110%">
                                 <c:forEach items="${formationBean.allFormation(item.idUser)}" var="f">
-                                    <h:outputText value="${f.anneeFormation} : ${f.nomFormation} ${f.nomFormation} ${f.commentaireFormation}"/><br/><br/>
+                                    <c:if test="${f.status==false || f.status == null}">
+                                        <h:outputText value="${f.anneeFormation} : ${f.nomFormation} ${f.nomFormation} ${f.commentaireFormation}"/><br/><br/>
+                                    </c:if>
                                 </c:forEach>
                             </div>
 
@@ -53,7 +55,9 @@ and open the template in the editor.
                         <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">COMPETENCES INFORMATIQUE</h4>
                         <div class="competence" style="font-size: 110% ">
                             <c:forEach items="${competenceBean.allCompetence(item.idUser)}" var="c">
-                                <h:outputText value="${c.module} : ${c.commentaire}"/>
+                                <c:if test="${c.status==false || c.status == null}">
+                                    <h:outputText value="${c.module} : ${c.commentaire}"/>
+                                </c:if>
                             </c:forEach>
 
 
@@ -63,8 +67,10 @@ and open the template in the editor.
                         <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">EXPERIENCES</h4>
                         <div class="competence" style="font-size: 110%">
                             <c:forEach items="${experienceBean.allExperience(item.idUser)}" var="e">
-                                <h:outputText value="${e.annee} : (${e.nbMois} mois) ${e.type} ${e.pays} ${e.ville}"/><br/>
-                                <h:outputText  style="margin-left: 11%"  value="${e.commentaire}"/><br/><br/>
+                                <c:if test="${e.status==false || e.status == null}">
+                                    <h:outputText value="${e.annee} : (${e.nbMois} mois) ${e.type} ${e.pays} ${e.ville}"/><br/>
+                                    <h:outputText  style="margin-left: 11%"  value="${e.commentaire}"/><br/><br/>
+                                </c:if>
                             </c:forEach>
 
                         </div>
@@ -72,8 +78,10 @@ and open the template in the editor.
                         <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">COMPETENCES LINGUISTIQUE</h4>
                         <div class="competence" style="font-size: 110%">
                             <c:forEach items="${langueBean.allLangue(item.idUser)}" var="l">
-                                <h:outputText value="${l.nomLing} : ${l.niveau}"/>
-                            </c:forEach>                          
+                                <c:if test="${l.status==false || l.status == null}">
+                                    <h:outputText value="${l.nomLing} : ${l.niveau}"/><br/>
+                                </c:if>
+                            </c:forEach><br/>                          
 
                         </div>
 
@@ -81,7 +89,9 @@ and open the template in the editor.
                         <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">CENTRE D'INTERET</h4>
                         <div class="competence" style="font-size: 110%">
                             <c:forEach items="${centreInteretBean.allCentreInteret(item.idUser)}" var="ci">
-                                <h:outputText value="${ci.nomCi} : ${ci.commentaire}"/>
+                                <c:if test="${ci.status==false || ci.status == null}">
+                                    <h:outputText value="${ci.nomCi} : ${ci.commentaire}"/><br/>
+                                </c:if>
                             </c:forEach>
                         </div><br/><br/>
                     </div>

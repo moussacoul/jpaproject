@@ -49,6 +49,8 @@ public class Linguistique implements Serializable {
     @Size(max = 255)
     @Column(name = "nomLing")
     private String nomLing;
+    @Column(name = "status")
+    private Boolean status;
     @JoinTable(name = "userlinguistique", joinColumns = {
         @JoinColumn(name = "idLing", referencedColumnName = "idLing")}, inverseJoinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")})
@@ -58,10 +60,19 @@ public class Linguistique implements Serializable {
     public Linguistique() {
     }
 
-    public Linguistique(String niveau, String nomLing, List<User> userList) {
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Linguistique(String niveau, String nomLing, List<User> userList, boolean  st) {
         this.niveau = niveau;
         this.nomLing = nomLing;
         this.userList = userList;
+        this.status=st;
     }
 
     public Linguistique(Integer idLing) {

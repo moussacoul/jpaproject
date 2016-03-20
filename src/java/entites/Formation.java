@@ -57,7 +57,10 @@ public class Formation implements Serializable {
     private String lieuFormation;
     @Size(max = 255)
     @Column(name = "nomFormation")
+    
     private String nomFormation;
+    @Column(name = "status")
+    private Boolean status;
     @JoinTable(name = "userformation", joinColumns = {
         @JoinColumn(name = "id_formation", referencedColumnName = "id_formation")}, inverseJoinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")})
@@ -67,16 +70,25 @@ public class Formation implements Serializable {
     public Formation() {
     }
 
-    public Formation(String anneeFormation, String commentaireFormation, String lieuFormation, String nomFormation, List<User> userList) {
+    public Formation(String anneeFormation, String commentaireFormation, String lieuFormation, String nomFormation, List<User> userList,boolean status) {
         this.anneeFormation = anneeFormation;
         this.commentaireFormation = commentaireFormation;
         this.lieuFormation = lieuFormation;
         this.nomFormation = nomFormation;
         this.userList = userList;
+        this.status = status;
     }
     
     public Formation(Integer idFormation) {
         this.idFormation = idFormation;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Integer getIdFormation() {

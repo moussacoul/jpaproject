@@ -50,6 +50,8 @@ public class Centreinteret implements Serializable {
     @Size(max = 255)
     @Column(name = "nom_ci")
     private String nomCi;
+    @Column(name = "status")
+    private Boolean status;
     @JoinTable(name = "userinteret", joinColumns = {
         @JoinColumn(name = "id_cinteret", referencedColumnName = "id_cinteret")}, inverseJoinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")})
@@ -59,10 +61,19 @@ public class Centreinteret implements Serializable {
     public Centreinteret() {
     }
 
-    public Centreinteret(String commentaire, String nomCi, List<User> userList) {
+    public Centreinteret(String commentaire, String nomCi, List<User> userList ,boolean st) {
         this.commentaire = commentaire;
         this.nomCi = nomCi;
         this.userList = userList;
+        this.status = st;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Centreinteret(Integer idCinteret) {

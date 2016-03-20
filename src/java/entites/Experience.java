@@ -65,6 +65,8 @@ public class Experience implements Serializable {
     @Size(max = 255)
     @Column(name = "ville")
     private String ville;
+    @Column(name = "status")
+    private Boolean status;
     @JoinTable(name = "userexperience", joinColumns = {
         @JoinColumn(name = "id_experience", referencedColumnName = "id_experience")}, inverseJoinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")})
@@ -75,7 +77,15 @@ public class Experience implements Serializable {
        
     }
 
-    public Experience( String annee, String commentaire, Integer nbMois, String pays, String type, String ville, List<User> userList) {
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Experience( String annee, String commentaire, Integer nbMois, String pays, String type, String ville, List<User> userList, boolean status) {
      
         this.annee = annee;
         this.commentaire = commentaire;
@@ -84,6 +94,7 @@ public class Experience implements Serializable {
         this.type = type;
         this.ville = ville;
         this.userList = userList;
+        this.status = status;
     }
     
 

@@ -32,6 +32,7 @@ public class LangueBean implements Serializable{
     private UserManagedBean userSession;  
     private String niveau;
     private String nom;
+    private boolean status = false;
    
     
     //User user = UserManagedBean.getCurrentUser();
@@ -40,6 +41,14 @@ public class LangueBean implements Serializable{
 
     public String getNiveau() {
         return niveau;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public void setNiveau(String niveau) {
@@ -57,7 +66,7 @@ public class LangueBean implements Serializable{
     public String createLangue(){
         List<User> userList = new ArrayList<User>();
         userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
-        Linguistique langue = new Linguistique(niveau, nom, userList);
+        Linguistique langue = new Linguistique(niveau, nom, userList,status);
         /*langue.setNiveau(niveau);
         langue.setNomLing(nom);*/
         langFacade.create(langue);

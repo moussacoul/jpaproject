@@ -34,11 +34,20 @@ public class FormationBean implements Serializable{
     private String anneeF;
     private String LieuF;
     private String Commentaire;
+    private boolean status = false;
    // private 
     User currentUser = UserManagedBean.getCurrentUser();
     public FormationBean(){
        // formationFacade = new FormationFacade();
         
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public FormationFacade getFormationFacade() {
@@ -82,7 +91,7 @@ public class FormationBean implements Serializable{
     public String createFormation(){
         List<User> listUser = new ArrayList<User>();
         listUser.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
-        Formation formation = new Formation(anneeF, Commentaire, LieuF, nomF,listUser);
+        Formation formation = new Formation(anneeF, Commentaire, LieuF, nomF,listUser,status);
         formationFacade.create(formation);
         /*formation.setAnneeFormation(anneeF);
         formation.setCommentaireFormation(Commentaire);

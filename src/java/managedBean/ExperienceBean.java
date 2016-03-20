@@ -36,9 +36,18 @@ public class ExperienceBean implements Serializable{
     private String ville;
     private String pays;
     private String Commentaire;
+    private boolean status = false;
     //User user = UserManagedBean.getCurrentUser();
     
     public ExperienceBean() {
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
     
 
@@ -94,7 +103,7 @@ public class ExperienceBean implements Serializable{
        
         List<User> userList = new ArrayList<User>();
         userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
-        Experience experience = new Experience(annee, Commentaire, duree, pays, type, ville, userList);
+        Experience experience = new Experience(annee, Commentaire, duree, pays, type, ville, userList,status);
         expFacade.create(experience);
         /*
         experience.setAnnee(annee);

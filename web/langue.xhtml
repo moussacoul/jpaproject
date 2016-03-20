@@ -29,9 +29,17 @@ and open the template in the editor.
                         </b:column>
                     </b:row>
                     <b:row>
-                        <b:column span="12">
+                        <b:column span="6">
                             <label for="langue">Niveau</label>
                             <b:inputText id="langue" value="#{langueBean.niveau}">
+                                <f:facet name="append">
+                                    <b:iconAwesome name="tag" />
+                                </f:facet>
+                            </b:inputText>
+                        </b:column>
+                        <b:column span="6">
+                            <label for="status">Privé ou Public</label>
+                            <b:inputText id="statusl" value="#{langueBean.status}">
                                 <f:facet name="append">
                                     <b:iconAwesome name="tag" />
                                 </f:facet>

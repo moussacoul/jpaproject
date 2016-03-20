@@ -54,6 +54,8 @@ public class Competence implements Serializable {
     @Size(max = 255)
     @Column(name = "module")
     private String module;
+    @Column(name = "status")
+    private Boolean status;
     @JoinTable(name = "usercompetence", joinColumns = {
         @JoinColumn(name = "id_comp", referencedColumnName = "id_comp")}, inverseJoinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")})
@@ -63,11 +65,20 @@ public class Competence implements Serializable {
     public Competence() {
     }
 
-    public Competence(String commentaire, String domaine, String module, List<User> userList) {
+    public Competence(String commentaire, String domaine, String module, List<User> userList, boolean st) {
         this.commentaire = commentaire;
         this.domaine = domaine;
         this.module = module;
         this.userList = userList;
+        this.status = st;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
     
     

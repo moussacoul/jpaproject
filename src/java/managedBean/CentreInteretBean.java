@@ -32,9 +32,18 @@ public class CentreInteretBean implements Serializable{
     private UserManagedBean userSession;  
     private String commentaire;
     private String nom;
+    private boolean  status = false;
     
    // User user = UserManagedBean.getCurrentUser();
     public CentreInteretBean() {
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getCommentaire() {
@@ -58,7 +67,7 @@ public class CentreInteretBean implements Serializable{
     public String createCInteret(){
         List<User> userList = new ArrayList<User>();
         userList.add(userSession.getCurrentUserFacade().find(userSession.getUserId()));
-        Centreinteret ci= new Centreinteret(commentaire, nom, userList);
+        Centreinteret ci= new Centreinteret(commentaire, nom, userList,status);
         ciFacade.create(ci);
         return "cv";
     }
