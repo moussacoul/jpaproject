@@ -9,6 +9,8 @@ import entites.UserFacade;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.ejb.EJB;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
@@ -155,15 +157,7 @@ public class UserManagedBean  implements Serializable{
                 pass = currentUser.getPass();
                 phoneNumber = currentUser.getTelephone();
                 titreCV = currentUser.getTitreCV();
-                /*
-                FacesContext context = FacesContext.getCurrentInstance();
-                Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-                String email = paramMap.get("j_idt6:email");//return current currentUser
-                //currentUser = currentUserFacade.find(currentUserFacade.findByEmail(email).getIdUser());
-                System.out.println(paramMap.keySet() + " okokkkkkkkkkkkkkkkkkkkkkkk" + email + "  "+currentUser.getIdUser());
-                /*String mesParametres = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().values().toString(); 
-                System.out.println(mesParametres.getBytes("email")+"loginnnnnnnnnnnnnnnnnnnnnn");*/
-              //  currentUser = 
+               
              return "cv";
             }
                 
@@ -178,7 +172,7 @@ public class UserManagedBean  implements Serializable{
     }
    
     public String inscription(){
-        if(mail.contains("@") && pass.equals(confirmerPass) && currentUserFacade.findByEmail(mail) == null){
+        if(isValideEmail(mail) && isValidePass(pass) && pass.equals(confirmerPass) && currentUserFacade.findByEmail(mail) == null){
             User u = new User();
             u.setEmail(mail);
             u.setPass(pass);
@@ -208,4 +202,36 @@ public class UserManagedBean  implements Serializable{
       public int getUserId(){
           return idUser;
       }
+      public static boolean isEmailAdress(String email){
+            Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$");
+            Matcher m = p.matcher(email.toUpperCase());
+        return m.matches();
+        }
+      
+      public boolean isValideEmail(String email){
+         
+                if(isEmailAdress(email)) {
+                    return true;
+                }else{
+                    return false;
+                }
+      
+           }
+      public boolean isValidePass(String pass){
+          if(pass.length()<4)return false;
+          return true;
+      }
+      
+      public void infoCV(){
+          mail =currentUser.getEmail();
+          name = currentUser.getNom();
+          address = currentUser.getAdresse();
+          phoneNumber = currentUser.getTelephone();
+          pass = currentUser.getPass();
+          titreCV = currentUser.getTitreCV();
+          firstname = currentUser.getPrenom();
+          System.out.println(mail +" mmmmmmmmmmmmmmm "+name +" rrrrrrrrrrrr"+ pass+" "+ address+" "+phoneNumber);
+         
+      }
+      
 }
