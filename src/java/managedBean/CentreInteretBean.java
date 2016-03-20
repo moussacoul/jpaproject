@@ -69,14 +69,17 @@ public class CentreInteretBean implements Serializable{
         System.out.println(ciFacade.getCentreInteretByUserId(userSession.getUserId()));
         return ciFacade.getCentreInteretByUserId(userSession.getUserId());
     }
+     public List<Centreinteret>allCentreInteret(int id){
+       
+        return ciFacade.getCentreInteretByUserId(userSession.getUserId());
+    }
     public String remove(){
         for(Centreinteret c :ciFacade.getCentreInteretByUserId(userSession.getUserId())){
             if(c.getNomCi().equals(nom)){
                 //competenceFacade.remove(c);
                 ciFacade.remove(c);
             }
-        }
-        
+        }   
         return "cv";
     }
 }

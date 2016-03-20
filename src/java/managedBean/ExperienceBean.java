@@ -117,6 +117,11 @@ public class ExperienceBean implements Serializable{
         System.out.println(expFacade.getExperienceByUserId(userSession.getUserId()));
         return expFacade.getExperienceByUserId(userSession.getUserId());
     }
+    
+    public List<Experience>allExperience(int id){
+        
+        return expFacade.getExperienceByUserId(userSession.getUserId());
+    }
     public String remove(){
         for(Experience e :expFacade.getExperienceByUserId(userSession.getUserId())){
             if(e.getAnnee().equals(annee)){

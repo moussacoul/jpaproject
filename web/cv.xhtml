@@ -4,175 +4,104 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition template="template/template.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="title">The CV</ui:define>
     <ui:define name="contenu">
         <h:outputStylesheet library="css" name="style.css" />
         <h:form class="formulaire">
-			<b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow">
-                            <b:row style="">
-                                <b:column span="2" style="">
-                                    <h:commandButton value="IDENTIFIANT" action="informationPersonnelle.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:commandButton value="FORMATION" action="formation.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:commandButton value="COMPETENCE" action="competence.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:commandButton value="EXPERIENCE" action="experience.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:commandButton value="LANGUE" action="langue.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:commandButton value="CENTRE D'INTERET" action="centreInteret.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:commandButton value="Deconnection" action="login.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
-                                </b:column>
-                            </b:row>
-                <h3 class="form-signin-heading" style="padding-left:15px;">CURRICULUM VITAE</h3>
-				<div style="padding:15px;background-color: white;">
-					<b:row>
-						<b:column span="12">
-							<h4 class="form-signin-heading" style="padding-left:15px;">IDENTITES PERSONNELLES</h4>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column span="12">
-							<label for="prenom">Titre</label>
-							<h:outputText value="#{userManagedBean.titreCV}">
-							</h:outputText>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column span="6">
-							<label for="prenom">Prénom</label>
-							<h:outputText value="#{userManagedBean.firstname}">
-							</h:outputText>
-						</b:column>
-						<b:column span="6">
-							<label for="nom">Nom</label>
-							<h:outputText value="#{userManagedBean.name}">
-							</h:outputText>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column span="6">
-							<label for="adress">Adresse</label>
-							<h:outputText value="#{userManagedBean.address}">
-							</h:outputText>
-						</b:column>
-						<b:column span="6">
-							<label for="phone">Téléphone</label>
-							<h:outputText value="#{userManagedBean.phoneNumber}">
-							</h:outputText>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column span="6">
-							<label for="email">Email</label>
-							<h:outputText value="#{userManagedBean.mail}">
-							</h:outputText>
-						</b:column>
-						<b:column span="6">
-							<label for="birthdate">Date d'anniversaire</label>
-							<h:outputText value="#{userManagedBean.birthdate}">
-							</h:outputText>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column span="12">
-							<h4 class="form-signin-heading" style="padding-left:15px;">FORMATION</h4>
-						</b:column>
-					</b:row>
-					<b:row>
-						<h:dataTable value="#{formationBean.allFormation()}" var="o">
-							<h:column>#{o.anneeFormation}</h:column>
-							<h:column> : </h:column>
-							<h:column>#{o.nomFormation} #{o.lieuFormation} #{o.commentaireFormation}</h:column>
-							<br></br>
-						</h:dataTable>
-					</b:row>
-					<b:row>
-						<b:column span="12">
-							<h4 class="form-signin-heading" style="padding-left:15px;">COMPETENCES INFORMATIQUE</h4>
-						</b:column>
-					</b:row>
-					<b:row>
-						<h:dataTable value="#{competenceBean.allCompetence()}" var="o">
-							<h:column>#{o.domaine}</h:column>
-							<h:column> :   </h:column>
-							<h:column>#{o.module} </h:column> <br></br> 
-							<h:column> :#{o.commentaire}   </h:column>
-						</h:dataTable>
-					</b:row>
-					<b:row>
-						<b:column span="12">
-							<h4 class="form-signin-heading" style="padding-left:15px;">EXPERIENCES</h4>
-						</b:column>
-					</b:row>
-					<b:row>
-						<h:dataTable value="#{experienceBean.allExperience()}" var="o">
-							<h:column>
-								#{o.annee}
-							</h:column>
-							<h:column>
-								#{o.type}
-							</h:column>
-							<h:column>
-								#{o.nbMois}
-							</h:column>
-							<h:column>
-								#{o.pays}
-							</h:column>
-							<h:column>
-								#{o.commentaire}
-							</h:column>
-							<h:column>
-								#{o.ville}
-							</h:column><br></br>
-						</h:dataTable>
-					</b:row>
-					<b:row>
-						<b:column span="12">
-							<h4 class="form-signin-heading" style="padding-left:15px;">COMPETENCES LINGUISTIQUE</h4>
-						</b:column>
-					</b:row>
-					<b:row>
-						<h:dataTable value="#{langueBean.allLangue()}" var="o">
-							<h:column>
-								#{o.nomLing} :  
-							</h:column>
-							<h:column>
-								 #{ o.niveau}
-							</h:column>
-						</h:dataTable>
-					</b:row>
-					<b:row>
-						<b:column span="12">
-							<h4 class="form-signin-heading" style="padding-left:15px;">CENTRE D'INTERET</h4>
-						</b:column>
-					</b:row>
-					<b:row>
-						<h:dataTable value="#{centreInteretBean.allCentreInteret()}" var="o">
-							<h:column>
-								 #{ o.nomCi } :
-							</h:column>
-							<h:column>
-								 #{ o.commentaire } 
-							</h:column>
-						</h:dataTable>
-					</b:row>
-				</div>
+            <b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow">
+                
+                <b:row style="">
+                    <b:column span="2" style="">
+                        <h:commandButton value="IDENTIFIANT" action="informationPersonnelle.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="FORMATION" action="formation.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="COMPETENCE" action="competence.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="EXPERIENCE" action="experience.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="LANGUE" action="langue.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="CENTRE D'INTERET" action="centreInteret.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="Afficher Les CV" action="allCV.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                    <b:column span="2">
+                        <h:commandButton value="Deconnection" action="login.xhtml" class="primary btn-default btn-md btn-block" style="height:35px"/>
+                    </b:column>
+                </b:row>
+                <h3 class="form-signin-heading" style="padding-left:15px; text-align: center">CURRICULUM VITAE</h3>
+                <div style="padding:15px;background-color: white;">
+                    
+                    <div style="font-size: 110%">
+                        <h:outputText value="${userManagedBean.name} ${userManagedBean.firstname}"/><br/>
+                        <h:outputText value="${userManagedBean.address}"/><br/>
+                        <h:outputText value="${userManagedBean.phoneNumber}"/><br/>
+                            <h:outputText value="${userManagedBean.mail}"/><br/>
+                            <h:outputText value="${userManagedBean.birthdate}"/><br/>
+                        </div>
+                        <h4 style="text-align: center; background-color: white">
+                            <h:outputText class="text-center" value ="${item.titreCV}"></h:outputText>
+                        </h4>
+                
+                    <div class="formation">
+                            <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">FORMATIONS</h4>
+                            <div style="font-size: 110%">
+                                <c:forEach items="${formationBean.allFormation()}" var="f">
+                                    <h:outputText value="${f.anneeFormation} : ${f.nomFormation} ${f.nomFormation} ${f.commentaireFormation}"/><br/><br/>
+                                </c:forEach>
+                            </div>
+
+                        </div>
+                     <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">COMPETENCES INFORMATIQUE</h4>
+                        <div class="competence" style="font-size: 110% ">
+                            <c:forEach items="${competenceBean.allCompetence()}" var="c">
+                                <h:outputText value="${c.module} : ${c.commentaire}"/>
+                            </c:forEach>
+
+
+                        </div>
+
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">EXPERIENCES</h4>
+                        <div class="competence" style="font-size: 110%">
+                            <c:forEach items="${experienceBean.allExperience()}" var="e">
+                                <h:outputText value="${e.annee} : (${e.nbMois} mois) ${e.type} ${e.pays} ${e.ville}"/><br/>
+                                <h:outputText  style="margin-left: 11%"  value="${e.commentaire}"/><br/><br/>
+                            </c:forEach>
+
+                        </div>
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">COMPETENCES LINGUISTIQUE</h4>
+                        <div class="competence" style="font-size: 110%">
+                            <c:forEach items="${langueBean.allLangue()}" var="l">
+                                <h:outputText value="${l.nomLing} : ${l.niveau}"/>
+                            </c:forEach>                          
+
+                        </div>
+
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">CENTRE D'INTERET</h4>
+                        <div class="competence" style="font-size: 110%">
+                            <c:forEach items="${centreInteretBean.allCentreInteret()}" var="ci">
+                                <h:outputText value="${ci.nomCi} : ${ci.commentaire}"/>
+                            </c:forEach>
+                        </div><br/><br/>
+                    </div>
             </b:container>
         </h:form>
     </ui:define>

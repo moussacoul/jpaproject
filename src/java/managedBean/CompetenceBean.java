@@ -84,7 +84,10 @@ public class CompetenceBean implements Serializable{
         System.out.println(competenceFacade.getCompetenceByUserId(userSession.getUserId()));
         return competenceFacade.getCompetenceByUserId(userSession.getUserId());
     }
-    
+    public List<Competence>allCompetence(int id){
+        
+        return competenceFacade.getCompetenceByUserId(id);
+    }
     public String remove(){
         for(Competence c :competenceFacade.getCompetenceByUserId(userSession.getUserId())){
             if(c.getModule().equals(module)){

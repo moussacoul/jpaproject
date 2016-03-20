@@ -71,6 +71,11 @@ public class LangueBean implements Serializable{
         System.out.println(langFacade.getLangueByUserId(userSession.getUserId()));
         return langFacade.getLangueByUserId(userSession.getUserId());
     }
+    
+    public List<Linguistique>allLangue(int id){
+       
+        return langFacade.getLangueByUserId(id);
+    }
     public String remove(){
         for(Linguistique l :langFacade.getLangueByUserId(userSession.getUserId())){
             if(l.getNomLing().equals(nom)){

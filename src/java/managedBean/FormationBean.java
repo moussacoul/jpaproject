@@ -41,6 +41,10 @@ public class FormationBean implements Serializable{
         
     }
 
+    public FormationFacade getFormationFacade() {
+        return formationFacade;
+    }
+
     public String getNomF() {
         return nomF;
     }
@@ -118,5 +122,10 @@ public class FormationBean implements Serializable{
         }
         
         return "cv";
+    }
+    public List<Formation>allFormation(int id){
+        
+       
+        return formationFacade.getFormationByUserId(id);
     }
 }

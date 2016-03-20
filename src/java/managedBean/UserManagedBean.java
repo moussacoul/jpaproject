@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package managedBean;
-import bean.utilisateurBean;
 import entites.User;
 import entites.UserFacade;
 import java.io.Serializable;

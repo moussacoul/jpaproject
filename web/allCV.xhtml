@@ -1,0 +1,93 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="title">The CV</ui:define>
+    <ui:define name="contenu">
+        <h:outputStylesheet library="css" name="style.css" />
+        <h:form class="formulaire">
+            <c:forEach items="${userManagedBean.findAll()}" var="item">
+                <b:container layout="fluid" style="padding:0px;max-width:900px;background-color:#E6E6E6;" styleClass="styleWindow">
+
+                    <h4 class="form-signin-heading" style="padding-left:15px; text-align: center">CURRICULUM VITAE</h4>
+                    <div style="padding:15px;background-color: white;">
+
+
+
+                        <h3 style="text-align: center;background-color: white">CURRICULUM VITAE</h3>
+                        <b:row>
+                            <b:column span="12">
+                                <h4 class="form-signin-heading" style="background-color: #A9E2F3" >IDENTITES PERSONNELLES</h4>
+                            </b:column>
+                        </b:row>
+                        <div style="font-size: 110%">
+                            <h:outputText value="${item.nom} ${item.prenom}"/><br/>
+                            <h:outputText value="${item.adresse}"/><br/>
+                            <h:outputText value="${item.telephone}"/><br/>
+                            <h:outputText value="${item.email}"/><br/>
+                            <h:outputText value="${item.dateNaissassance}"/><br/>
+                        </div>
+                        <h4 style="text-align: center; background-color: white">
+                            <h:outputText class="text-center" value ="${item.titreCV}"></h:outputText>
+                        </h4>
+                        <div class="formation">
+                            <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">FORMATIONS</h4>
+                            <div style="font-size: 110%">
+                                <c:forEach items="${formationBean.allFormation(item.idUser)}" var="f">
+                                    <h:outputText value="${f.anneeFormation} : ${f.nomFormation} ${f.nomFormation} ${f.commentaireFormation}"/><br/><br/>
+                                </c:forEach>
+                            </div>
+
+                        </div>
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">COMPETENCES INFORMATIQUE</h4>
+                        <div class="competence" style="font-size: 110% ">
+                            <c:forEach items="${competenceBean.allCompetence(item.idUser)}" var="c">
+                                <h:outputText value="${c.module} : ${c.commentaire}"/>
+                            </c:forEach>
+
+
+                        </div>
+
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">EXPERIENCES</h4>
+                        <div class="competence" style="font-size: 110%">
+                            <c:forEach items="${experienceBean.allExperience(item.idUser)}" var="e">
+                                <h:outputText value="${e.annee} : (${e.nbMois} mois) ${e.type} ${e.pays} ${e.ville}"/><br/>
+                                <h:outputText  style="margin-left: 11%"  value="${e.commentaire}"/><br/><br/>
+                            </c:forEach>
+
+                        </div>
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">COMPETENCES LINGUISTIQUE</h4>
+                        <div class="competence" style="font-size: 110%">
+                            <c:forEach items="${langueBean.allLangue(item.idUser)}" var="l">
+                                <h:outputText value="${l.nomLing} : ${l.niveau}"/>
+                            </c:forEach>                          
+
+                        </div>
+
+
+                        <h4 class="text-left" style ="margin-top: 5% ;background-color: #A9E2F3">CENTRE D'INTERET</h4>
+                        <div class="competence" style="font-size: 110%">
+                            <c:forEach items="${centreInteretBean.allCentreInteret(item.idUser)}" var="ci">
+                                <h:outputText value="${ci.nomCi} : ${ci.commentaire}"/>
+                            </c:forEach>
+                        </div><br/><br/>
+                    </div>
+
+                </b:container>
+            </c:forEach>
+        </h:form>
+    </ui:define>
+</ui:composition>
