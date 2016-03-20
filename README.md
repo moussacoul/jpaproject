@@ -1,7 +1,7 @@
 # jpaproject
 ===============================================================================
    
-    Copyright (c) 2006-2016 Pertus Coulibaly - moussacoul90@yahoo.fr
+    Copyright (c) 2015-2016 Pertus Coulibaly - moussacoul90@yahoo.fr
     jpaproject (JaPJ)
     More in 'doc/howto' for how to use the application
 
